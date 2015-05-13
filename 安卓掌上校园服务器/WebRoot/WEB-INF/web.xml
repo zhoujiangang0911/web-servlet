@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+  <filter>
+    <filter-name>code</filter-name>
+    <filter-class>cn.rjtraining.jdbc.FilterCodeing</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>code</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>login</filter-name>
+    <filter-class>cn.rjtraining.jdbc.FilterLogin</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>login</filter-name>
+    <url-pattern>/system/*</url-pattern>
+  </filter-mapping>
+   <servlet>
+    <servlet-name>register</servlet-name>
+    <servlet-class>cn.rjtraining.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>register</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  
+  
+   <servlet>
+    <servlet-name>manager</servlet-name>
+    <servlet-class>cn.rjtraining.servlet.ManagerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>manager</servlet-name>
+    <url-pattern>/manSearch</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>place</servlet-name>
+    <servlet-class>cn.rjtraining.servlet.PlaceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>place</servlet-name>
+    <url-pattern>/plaSearch</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>college</servlet-name>
+    <servlet-class>cn.rjtraining.servlet.CollegeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>college</servlet-name>
+    <url-pattern>/colSearch</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>DistrictServlete</servlet-name>
+    <servlet-class>cn.rjtraining.servlet.DistrictServlete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DistrictServlete</servlet-name>
+    <url-pattern>/DistrictServlete</url-pattern>
+  </servlet-mapping>
+  
+
+  
+  <servlet>
+    <servlet-name>log</servlet-name><!--log是任意起的，只要见闻知意  -->
+    <servlet-class>cn.rjtraining.servlet.UserServlet</servlet-class><!--告诉前台页面应该是找哪个类处理页面传来的信息  -->
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>log</servlet-name><!--这里名称必须和上面的一模一样，跟后台的servlet就配成了一对  -->
+    <url-pattern>/login</url-pattern><!-- 配置命令映射 -->
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AlterServlet</servlet-name>
+    <servlet-class>cn.rjtraining.servlet.PswServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AlterServlet</servlet-name>
+    <url-pattern>/pswUpdate</url-pattern>
+  </servlet-mapping> 
+  <servlet>
+  <servlet-name>exit</servlet-name>
+  <servlet-class>cn.rjtraining.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Client</servlet-name>
+    <servlet-class>cn.rjtraining.servlet.Client</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>cn.rjtraining.servlet.TestServlet</servlet-class>
+  </servlet>
+
+
+  <servlet-mapping>
+  <servlet-name>exit</servlet-name>
+  <url-pattern>/user_exit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Client</servlet-name>
+    <url-pattern>/servlet/Client</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/servlet/TestServlet</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

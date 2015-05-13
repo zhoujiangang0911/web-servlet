@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="安卓掌上校园服务器">
+        <wb-resource deploy-path="/" source-path="/WebRoot"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/DataSource"/>
+        <property name="context-root" value="/xscj"/>
+        <property name="java-output-path" value="/安卓掌上校园服务器/WebRoot/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>
