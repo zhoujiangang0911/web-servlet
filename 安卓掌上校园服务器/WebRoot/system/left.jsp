@@ -50,7 +50,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>				
 		</td>
 	</tr>
-	
+	<tr>
+		<td align="center">
+			<table width="150" height="40" style="background-color:#CCCCCC">
+				<tr>
+					<td align="center" style="font-size:20px">
+					
+						<a href="userdistribution?action=list"  target="main"><font color="#000000" face="新宋体"><b>用户分布</b></font></a>
+					</td>
+				</tr>
+			</table>				
+		</td>
+	</tr>
 </table>
 </body>
 </html>

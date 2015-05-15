@@ -37,8 +37,12 @@ public class UserServlet extends HttpServlet {
 		String psw = req.getParameter("password");
 		String action=req.getParameter("action");
 		String uname=req.getParameter("uname");
+		String Districtid = req.getParameter("sheng");
+		String usertype = req.getParameter("usertype");
 		if(action!=null){
 			int iuid = Integer.parseInt(uid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。
+			int dis = Integer.parseInt(Districtid);
+			int ut = Integer.parseInt(usertype);
 			UserDao ud = new UserDaoImpl();  //创建一个UserDao类的对象。这里使用了上转型。
 			User user = ud.find(iuid);//通过UserDao()提供的find()方法，使用iuid去在数据库中查找，返回一个user对象。
 			if(user!=null){
@@ -49,7 +53,10 @@ public class UserServlet extends HttpServlet {
 				user.setUid(iuid);
 				user.setPassword(psw);
 				user.setUname(uname);
+				user.setDistrictid(dis);
+				user.setUsertypeid(ut);
 				ud.insert(user);
+				
 				req.setAttribute("msg", "<font color=blue>注册成功，请登录</font>");
 					req.getRequestDispatcher("login.jsp").forward(req, res); 
 			}

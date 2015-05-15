@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Page implements Serializable {
 
-	private final int pageSize = 2; // 每页存储数据多少条
+	private final int pageSize = 5; // 每页存储数据多少条
 	private int pageNow = 1; // 当前是第几页
 	private int pageCount; // 总共有多少页？
 	private long rowCount; // 总共有多少条数据

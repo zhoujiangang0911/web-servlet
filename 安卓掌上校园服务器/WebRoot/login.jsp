@@ -120,13 +120,16 @@ tabindex 使table 键按照自己的要求的顺序往下走。-->
 								<input type="reset" value="重置"
 								style=" width:55px; height:34px" tabindex="7" /> &nbsp;&nbsp;
 								
-								 <a
-								href="register.jsp" onclick="checks()">注册</a></Td>
 						</tr>
 						</form>
-						<form action="DistrictServlete" method="post" name="DistrictServlete"><input type="submit" value="注册"
-								style=" width:55px; height:34px" tabindex="7" /> </form>
+						
+						
 					</table>
+					
+						<form action="DistrictServlete" method="post" name="DistrictServlete"><input type="submit" value="注册"
+								style=" width:80px; height:34px" tabindex="7" /> </form>
+								
+						
 			</td>
 
 		</tr>

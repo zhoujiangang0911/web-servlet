@@ -5,11 +5,27 @@ public class User implements Serializable {
 	private String uname; // 用户名称
 	private String password; // 用户密码
 //	private String role; // 用户角色
+	private int districtid;
+	
+	private int usertypeid;
+	
+	public int getUsertypeid() {
+		return usertypeid;
+	}
+	public void setUsertypeid(int usertypeid) {
+		this.usertypeid = usertypeid;
+	}
 	public int getUid() {
 		return uid;
 	}
 	public void setUid(int uid) {
 		this.uid = uid;
+	}
+	public int getDistrictid() {
+		return districtid;
+	}
+	public void setDistrictid(int districtid) {
+		this.districtid = districtid;
 	}
 	public String getUname() {
 		return uname;

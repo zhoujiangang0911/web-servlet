@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" import="java.util.List"  import="cn.rjtraining.model.District" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" import="java.util.List"  import="cn.rjtraining.model.District"  import="cn.rjtraining.model.UserType" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -19,36 +19,14 @@
 
 		<script type="text/javascript">
 //输入用户名密码，选择了正确的角色身份之后，直接点击enter键，就会触发登陆按钮的单击事件。
-function on_return() {
-	if (window.event.keyCode == 13) {
-		if (document.all('sub') != null) {
-			document.all('sub').click();
-		}
-	}
-}
+
 </script>
+
 <script type="text/javascript">
-	jQuery(document).ready(function(){
-		//省市联动
-		jQuery("#district").CascadingSelect(
-			jQuery("#district1"),
-			"getdistrict.htm?",
-			{datatype:"json",textfield:"name",valuefiled:"id",parameter:"id"},
-			function(){
-				jQuery("#district1").AddOption("请选择城市","",true,0);
-				jQuery("#district2").html("");
-			}
-		);
-		jQuery("#district1").CascadingSelect(
-			jQuery("#district2"),
-			"getdistrict.htm?",
-			{datatype:"json",textfield:"name",valuefiled:"id",parameter:"id"},
-			function(){
-				//jQuery("#district2").AddOption("请选择","-1",true,0);
-			}
-		);
-		//省市联动
-	});
+function aa() {
+	alter("asdas");
+}
+
 </script>
 	</head>
 	<body bgcolor="#dddddd" onkeydown="on_return();">
@@ -64,12 +42,23 @@ function on_return() {
 						用户类型：
 					</td>
 					<td>
-					<select id = "sheng" name = "shengshi" >
-					<option value = "学生">学生</option>
-					<option value = "老师">老师</option>
-					<option value = "游客">游客</option>
+					<select id ="usertype" name = "usertype" >
+                    <option value="">选择用户类型</option>
+						<%    
+						List<UserType> ls = new ArrayList();
+						ls = (List<UserType>)request.getAttribute("usertype");
+						for (Object o : ls){
+							UserType ut =(UserType) o;
+							System.out.println(ut.getUsertypeid());
+							System.out.println(ut.getUsertypename());
+							%>
+						<option  value="<%=ut.getUsertypeid()%>"><%=ut.getUsertypename()%></option>
+						<%	
+						}
+					 	%>
 					</td>
 				</select>
+				
 				</tr>
 				
 				<tr height="32px">
@@ -104,33 +93,31 @@ function on_return() {
 						选择籍贯：
 					</td>
 					<td>
-					<select id = "sheng" name = "shengshi" >
+					<select id ="sheng" name = "sheng" >
 					
-                    <option value="$!{item.id}">$</option>
-					<%
-						 List<District> ls = new ArrayList();
-						ls = (List<District>)request.getAttribute("listsheng");
-						for (Object o : ls){
+                    <option value="">选择省份</option>
+						<%    
+						List<District> lss = new ArrayList();
+						lss = (List<District>)request.getAttribute("listsheng");
+						for (Object o : lss){
 							District d =(District) o;
-							System.out.println(d.getName());
+							%>
+						<option  value="<%=d.getId() %>"><%=d.getName() %></option>
+						<%	
 						}
-					 %>
-					 
-					
-		
-					<option value = "陕西省">陕西省</option>
-					
+					 	%>
 					</td>
 				</select>
 				</tr>
 				<tr height="32px">
 					<td colspan="2" align="center">
 						&nbsp; &nbsp; &nbsp;
-						<input type="submit" id="sub" value="注 册"
+						<input type="submit" id="sub" value="注 册" 
 							style="width: 55px; height: 34px" />
 						&nbsp; &nbsp;&nbsp;
-						<input type="reset" value="重 置" style="width: 55px; height: 34px"
+						<input type="reset" value="重 置" style="width: 55px; height: 34px" 
 							tabindex="7" />
+							
 						<input type="hidden" name="action" value="register" />
 					</td>
 				</tr>

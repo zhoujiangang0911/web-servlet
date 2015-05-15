@@ -1,6 +1,9 @@
 package cn.rjtraining.dao.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.rjtraining.dao.UserDao;
 import cn.rjtraining.jdbc.Dbconnect;
 import cn.rjtraining.model.User;
@@ -41,7 +44,7 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 	public int insert(User user) {
-		String sql="insert into user values("+user.getUid()+",'"+user.getUname()+"','"+user.getPassword()+"')";	
+		String sql="insert into user values("+user.getUid()+",'"+user.getUname()+"','"+user.getPassword()+"',"+user.getDistrictid()+","+user.getUsertypeid()+")";	
 		int x=dc.noSelectInfo(sql);
 		return x;
 	}
@@ -72,5 +75,37 @@ public class UserDaoImpl implements UserDao {
  			e.printStackTrace();
  		}
  		return -1;
+	}
+	@Override
+	public List<User> findAllUser() {
+		
+		String sql ="select * from user";
+		List<User> ls = new ArrayList<>();
+		
+		 System.out.println(sql);
+	        ResultSet rs = null;
+	        int x =0;
+	        rs= dc.selectInfo(sql);
+	        try {
+	        	while (rs.next()){
+	        		User user = new User();
+	        		
+	        		user.setUid(rs.getInt(1));
+	        		user.setUname(rs.getString("uname"));
+	        		user.setPassword(rs.getString("password"));
+	        		user.setDistrictid(rs.getInt(4));
+	        		user.setUsertypeid(rs.getInt(5));
+	        		ls.add(user);
+	        	}
+	 			
+	 		} catch (SQLException e) {
+	 			// TODO Auto-generated catch block
+	 			System.out.println("sql´íÎó");
+	 			e.printStackTrace();
+	 		}
+	        
+	        
+		
+		return ls;
 	}
 }

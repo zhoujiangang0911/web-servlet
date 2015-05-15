@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		共 <span>${data.pageCount}</span> 页&nbsp;&nbsp;&nbsp;
 		<a href="colSearch?action=list&pageNow=1">首页</a> &nbsp;	
 		<a href="colSearch?action=list&pageNow=${data.previousPage}">上一页</a>
-		<c:forEach var="i" begin="${data.startPage}"end="${data.endPage}">
+		<c:forEach var="i" begin="${data.startPage}" end="${data.endPage}">
 		<a href="colSearch?action=list&pageNow=${i}">
 		<c:choose>
 		<c:when test="${i eq data.pageNow}">

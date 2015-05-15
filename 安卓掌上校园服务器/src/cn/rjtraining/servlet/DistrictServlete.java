@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.rjtraining.dao.DistrictDao;
 import cn.rjtraining.dao.UserDao;
+import cn.rjtraining.dao.UserTypeDao;
 import cn.rjtraining.dao.impl.DistrictDaoImpl;
 import cn.rjtraining.dao.impl.UserDaoImpl;
+import cn.rjtraining.dao.impl.UserTypeDaoImpl;
 import cn.rjtraining.model.District;
 import cn.rjtraining.model.User;
+import cn.rjtraining.model.UserType;
 
 public class DistrictServlete extends HttpServlet {
 
@@ -31,22 +34,12 @@ public class DistrictServlete extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		 DistrictDao dao = new DistrictDaoImpl();
-		 
+		 UserTypeDao dd = new UserTypeDaoImpl();
 		List< District> list= dao.findDistrictByAllSheng();
+		List<UserType> ls=dd.findUserTypeAllType();
 		List<String> ll = new ArrayList<>();
-		ll.add("a");
-		ll.add("b");
-		ll.add("c");
-		ll.add("d");
-		
-		for (String string : ll) {
-			System.out.println(string);
-		}
-		for (District district : list) {
-			System.out.println(district.getId());
-		}
-		System.out.println(list.size());
 		req.setAttribute("listsheng",list);
+		req.setAttribute("usertype",ls);
 		try {
 			req.getRequestDispatcher("register.jsp").forward(req, res);
 		} catch (Exception e) {
@@ -56,17 +49,7 @@ public class DistrictServlete extends HttpServlet {
 	}
 
 	private void doList(HttpServletRequest req, HttpServletResponse res) {
-		UserDao ud = new UserDaoImpl();  //创建一个UserDao类的对象。这里使用了上转型。
-		 DistrictDao dao = new DistrictDaoImpl();
-		 
-		List< District> list= dao.findDistrictByAllSheng();
-		System.out.println("ser"+list.size());
-		req.setAttribute("listsheng",list);
-		try {
-			req.getRequestDispatcher("register.jsp").forward(req, res);
-		} catch (Exception e) {
-			System.out.println("跳转异常");
-		}
+		
 		 
 	}	 
 	
