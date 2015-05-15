@@ -13,7 +13,7 @@ public class Dbconnect {
 //数据库的用户名
 	private static final String USER = "root";
 //在创建数据库时，我们给定的密码
-	private static final String PASSWORD = "123456";
+	private static final String PASSWORD = "java";
 
 	private   Connection con;
 	private  Statement st;

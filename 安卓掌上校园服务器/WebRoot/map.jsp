@@ -22,10 +22,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
 	</style>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=iO8pqDGQUvP8GzMyjRPoiOe8"></script>
-
+	<style type="text/css">
+		.baidumap{
+			width:500px; 
+			height:500px;
+		}
+	</style>
   </head>
     <body bgcolor="#f0f5fb">
-    <div id="allmap"></div>
+	<div style="height:50px  ;background: #e2e2e2" align="right" >
+		<h1 align="center" ><font color="#000000">学员分布</font></h1>
+	</div>
+    <div style="height:500px ;align="right" id="allmap"></div>
   </body>
 </html>
 <script type="text/javascript">

@@ -18,8 +18,8 @@ a{ font-family:"迷你简隶书"; background-color:#CCC; font-size:17px}
 <div style="width:100%; height:135px;">
 <table width="953" height="145" border="0">
 <tr height="40">
-<td width="100"></td>
-<td colspan="4" style="text-align:center; vertical-align:middle; font-family:'迷你简隶书'; font-size:50px">安卓掌上校园系统</td>
+<td width="250"></td>
+<td colspan="4" style="text-align:center; vertical-align:middle; font-family:'迷你简隶书'; font-size:40px">安卓掌上校园系统</td>
 <td></td>
 <td width="35"></td>
 <td width="35"></td>
