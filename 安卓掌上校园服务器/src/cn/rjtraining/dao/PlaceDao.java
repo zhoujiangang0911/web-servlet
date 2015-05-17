@@ -1,6 +1,8 @@
 package cn.rjtraining.dao;
 
 
+import java.util.List;
+
 import cn.rjtraining.model.Page;
 import cn.rjtraining.model.Place;
 public interface PlaceDao {
@@ -47,5 +49,7 @@ public interface PlaceDao {
 	
 	int placesum();
 	//地点总数
+	
+	List<Place> findAllPlace();
 }
 //该接口规定了和用户有关的方法。是我们程序条理化的重要组成部分，接口的书写是能够体现一个程序员对整个程序把握性的能力。

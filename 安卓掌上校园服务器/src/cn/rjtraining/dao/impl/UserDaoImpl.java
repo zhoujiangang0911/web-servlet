@@ -126,4 +126,20 @@ public class UserDaoImpl implements UserDao {
 		}
 		return x;
 	}
+	@Override
+	public int findByDistrict(int districtid) {
+		int x = 0;
+		String sql = "select * from user where districtid = "+districtid;
+		ResultSet rs = null;
+        rs= dc.selectInfo(sql);
+        try {
+			while(rs.next()){
+				x++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return x;
+	}
 }

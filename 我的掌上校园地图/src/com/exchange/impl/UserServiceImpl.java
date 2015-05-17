@@ -1,5 +1,7 @@
 package com.exchange.impl;
 
+import java.net.URLEncoder;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
@@ -110,7 +112,8 @@ public class UserServiceImpl implements UserService{
 		           +updatePassword+"&updateMcollege="+updateMcollege+"&updateMage="+updateMage//
 		           +"&updateMsex="+updateMsex+"&updateMaddress="+updateMaddress+"&updateMphone="//
 		           +updateMphone+"&action="+action;//
-		HttpGet get=new HttpGet(uri);	
+		String s = URLEncoder.encode(uri, "utf-8");
+		HttpGet get=new HttpGet(s);	
 		HttpResponse response=client.execute(get);
 		
 		int ststusCode=response.getStatusLine().getStatusCode();
@@ -157,18 +160,18 @@ public class UserServiceImpl implements UserService{
 		int ststusCode=response.getStatusLine().getStatusCode();
 		System.out.println(ststusCode);
 		Log.i("--zhou", "---"+ststusCode);
-		if(ststusCode!=HttpStatus.SC_OK)
-		{
-			throw new ServiceRulesException(RegisterActivity.MSG_SERVER_ERROR);
-		}
-		//String result= EntityUtils.toString(response.getEntity(),HTTP.UTF_8);
-	//	Log.d(TAG, result);
-		//if(result.equals("success"))
-		//{
-			
-		//}else{
-			throw new ServiceRulesException(RegisterActivity.MSG_LOGIN_FAILED);
-		//}
+//		if(ststusCode!=HttpStatus.SC_OK)
+//		{
+//			throw new ServiceRulesException(RegisterActivity.MSG_SERVER_ERROR);
+//		}
+//		//String result= EntityUtils.toString(response.getEntity(),HTTP.UTF_8);
+//	//	Log.d(TAG, result);
+//		//if(result.equals("success"))
+//		//{
+//			
+//		//}else{
+//			throw new ServiceRulesException(RegisterActivity.MSG_LOGIN_FAILED);
+//		//}
 		
 		
 		

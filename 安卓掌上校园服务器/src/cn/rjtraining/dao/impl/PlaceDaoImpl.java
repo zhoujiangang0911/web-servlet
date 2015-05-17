@@ -7,6 +7,7 @@ import cn.rjtraining.dao.PlaceDao;
 import cn.rjtraining.jdbc.Dbconnect;
 import cn.rjtraining.model.Page;
 import cn.rjtraining.model.Place;
+import cn.rjtraining.model.User;
 
 
 public class PlaceDaoImpl implements PlaceDao {
@@ -172,5 +173,32 @@ public class PlaceDaoImpl implements PlaceDao {
  			e.printStackTrace();
  		}
  		return -1;
+	}
+	@Override
+	public List<Place> findAllPlace() {
+		List<Place> ls = new ArrayList<>();
+		
+		String sql = "select * from place";
+		 ResultSet rs = null;
+	        int x =0;
+	        rs= dc.selectInfo(sql);
+	        try {
+	        	while (rs.next()){
+	        		Place pl = new Place();
+	        		pl.setPid(rs.getInt(1));
+	        		pl.setPname(rs.getString("pname"));
+	        		pl.setPlongtitude(rs.getDouble(3));
+	        		pl.setPlatitude(rs.getDouble(4));
+	        		pl.setPinfo(rs.getString("pinfo"));
+	        		ls.add(pl);
+	        	}
+	 			
+	 		} catch (SQLException e) {
+	 			// TODO Auto-generated catch block
+	 			System.out.println("sql´íÎó");
+	 			e.printStackTrace();
+	 		}
+		
+		return ls;
 	}
 }

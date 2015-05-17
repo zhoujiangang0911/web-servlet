@@ -28,7 +28,7 @@ public class SelectActivity extends Activity {
 	private Button btn_using_status;
 	private Button btn_start_map;
 	private Button btn_exit_map;
-	
+	private Button btn_user_district;
 	private static ProgressDialog dialog;
 	private static final int FLAG_LOGIN_SUCCESS=1;
 	private static final String MSG_LOGIN_ERROE="²éÑ¯³ö´í";
@@ -50,6 +50,16 @@ public class SelectActivity extends Activity {
 		
 	}
 	private void addListener() {
+		btn_user_district.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(SelectActivity.this, UserDistrictActivity.class);
+				startActivity(intent);
+			}
+		});
+		
 		btn_using_status.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -192,6 +202,7 @@ public class SelectActivity extends Activity {
 		btn_start_map=(Button) findViewById(R.id.school_map);
 		btn_exit_map=(Button) findViewById(R.id.exit_app);
 		btn_my_info=(Button) findViewById(R.id.my_info);
+		btn_user_district = (Button) findViewById(R.id.btn_userdistrict);
 	}
 	
 	void showTip(String str)

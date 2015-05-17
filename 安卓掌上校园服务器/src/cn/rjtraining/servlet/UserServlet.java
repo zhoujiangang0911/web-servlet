@@ -32,19 +32,38 @@ public class UserServlet extends HttpServlet {
 	//重写doPost()方法。
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-		String uid = req.getParameter("uid");  //用uid来接收从login页面传来值uid；以下相同。接收到的属性为String类型。在这里没有判断uid，password，role
+		String uid = new String(req.getParameter("uid").getBytes("iso8859-1"),"utf-8");  //用uid来接收从login页面传来值uid；以下相同。接收到的属性为String类型。在这里没有判断uid，password，role
 //是否为空，因为在login.jsp页面的javascript中已经进行过判断了，如果没有在页面进行判断，则这里需要判断该属性是否为空。
-		String psw = req.getParameter("password");
-		String action=req.getParameter("action");
-		String uname=req.getParameter("uname");
-		String Districtid = req.getParameter("sheng");
-		String usertype = req.getParameter("usertype");
-		String collegeid = req.getParameter("college");
-		String age = req.getParameter("age");
-		String sex = req.getParameter("sex");
+		String psw = new String(req.getParameter("password").getBytes("iso8859-1"),"utf-8");
+		String action = new String(req.getParameter("action").getBytes("iso8859-1"),"utf-8");
+		String uname = new String(req.getParameter("uname").getBytes("iso8859-1"),"utf-8");
+		String Districtid = new String(req.getParameter("sheng").getBytes("iso8859-1"),"utf-8");
+		String usertype = new String(req.getParameter("usertype").getBytes("iso8859-1"),"utf-8");
+		String collegeid = new String(req.getParameter("college").getBytes("iso8859-1"),"utf-8");
+		String age = new String(req.getParameter("age").getBytes("iso8859-1"),"utf-8");
+		String sex = new String(req.getParameter("sex").getBytes("iso8859-1"),"utf-8");
+		String phone = new String(req.getParameter("phone").getBytes("iso8859-1"),"utf-8");
+		String address = new String(req.getParameter("address").getBytes("iso8859-1"),"utf-8");
 		
-		String phone = req.getParameter("phone");
-		String address = req.getParameter("address");
+		
+		
+		
+		
+//		String psw = req.getParameter("password");
+//		String action=req.getParameter("action");
+//		String uname=req.getParameter("uname");
+//		String Districtid = req.getParameter("sheng");
+//		String usertype = req.getParameter("usertype");
+//		String collegeid = req.getParameter("college");
+//		String age = req.getParameter("age");
+//		String sex = req.getParameter("sex");
+//		
+//		String phone = req.getParameter("phone");
+//		String address = req.getParameter("address");
+		byte b[]= address.getBytes("iso8859-1");
+		String s = 	new String(b,"utf-8");
+		System.out.println(s);
+	
 		
 		if(action!=null){
 			int iuid = Integer.parseInt(uid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。

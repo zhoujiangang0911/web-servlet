@@ -7,7 +7,8 @@
 				org.jfree.chart.ChartFactory,
                org.jfree.chart.JFreeChart,  
                org.jfree.chart.StandardChartTheme,         
-               org.jfree.chart.plot.PlotOrientation,          
+               org.jfree.chart.plot.PlotOrientation,
+                         
                org.jfree.chart.servlet.ServletUtilities,
                org.jfree.data.category.DefaultCategoryDataset,
                org.jfree.chart.labels.StandardCategoryItemLabelGenerator,
@@ -59,7 +60,7 @@ String graphURL = request.getContextPath() + "/DisplayChart?filename=" + filenam
 
 <HTML> 
 <HEAD> 
-<META http-equiv=Content-Type content="text/html; charset=GBK"> 
+<META http-equiv=Content-Type content="text/html; charset=utf-8"> 
 <META NAME="Author" CONTENT="Alpha">
 <TITLE>程序员学历情况调查表-By Alpha</TITLE> 
 </HEAD> 

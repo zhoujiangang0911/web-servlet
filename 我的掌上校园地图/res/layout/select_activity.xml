@@ -40,6 +40,13 @@
                 android:layout_marginBottom="20dp"
                 android:text="@string/app_using_status"
                 style="@android:style/MediaButton"/>
+             <Button
+                android:id="@+id/btn_userdistrict"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="老乡分布"
+                style="@android:style/MediaButton"/>
             <Button
                 android:id="@+id/school_map"
                 android:layout_width="fill_parent"

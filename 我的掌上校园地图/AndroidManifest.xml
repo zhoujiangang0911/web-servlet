@@ -197,7 +197,9 @@
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"/>
              
            <activity android:name="org.achartengine.GraphicalActivity" />
-           
+           <activity
+            android:name="com.exchange.UserDistrictActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"/>
         <service 
             android:name="com.baidu.location.f" 
             android:process=":remote" 

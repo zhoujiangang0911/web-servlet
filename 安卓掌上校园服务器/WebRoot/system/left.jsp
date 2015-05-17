@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<table width="150" height="40" style="background-color:#CCCCCC">
 				<tr>
 					<td align="center" style="font-size:20px">
-						<a href="map.jsp"  target="main"><font color="#000000" face="新宋体"><b>地图显示</b></font></a>
+						<a href="map?action=list"  target="main"><font color="#000000" face="新宋体"><b>地图显示</b></font></a>
 					</td>
 				</tr>
 			</table>				
@@ -102,9 +102,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 			</table>					
 		</td>
-	</tr>
-
 	
+	<tr>
+		<td align="center">
+			<table width="150" height="40" style="background-color:#CCCCCC">
+				<tr>
+					<td align="center" style="font-size:20px">
+						<a href="userjfree?action=list"  target="main"><font color="#000000" face="新宋体"><b>老乡分布</b></font></a>
+					</td>
+				</tr>
+			</table>					
+		</td>
+	</tr>
 	
 	
 </table>

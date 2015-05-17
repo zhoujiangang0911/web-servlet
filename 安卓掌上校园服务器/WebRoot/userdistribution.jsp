@@ -39,6 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	List<User> ls =(List<User> )request.getAttribute("list");
    		for(Object o : ls){
 		User user =(User) o;
+		
     %>
   <tr>
    
