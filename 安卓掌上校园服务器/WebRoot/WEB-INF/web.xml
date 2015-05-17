@@ -63,8 +63,39 @@
     <url-pattern>/DistrictServlete</url-pattern>
   </servlet-mapping>
   
-
+	<!--  	<servlet>
+    <servlet-name>JFreeServlet</servlet-name>
+    <servlet-class>cn.rjtraining.servlet.JFreeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JFreeServlet</servlet-name>
+    <url-pattern>/jfree</url-pattern>
+  </servlet-mapping>
+  -->
+	
+	 <servlet>  
+   <servlet-name>FileDownload</servlet-name>  
+   <servlet-class>cn.rjtraining.servlet.FileDownload</servlet-class>  
+   <init-param>  
+    <param-name>bufferSize</param-name>  
+    <param-value>2048</param-value>  
+   </init-param>  
+ </servlet>  
   
+	<servlet-mapping>  
+   <servlet-name>FileDownload</servlet-name>  
+   <url-pattern>/FileDownload</url-pattern>  
+ </servlet-mapping> 
+	
+		
+  <servlet>
+		<servlet-name>DisplayChart</servlet-name>
+		<servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DisplayChart</servlet-name>
+        <url-pattern>/DisplayChart</url-pattern>
+	</servlet-mapping>
   <servlet>
     <servlet-name>log</servlet-name><!--log是任意起的，只要见闻知意  -->
     <servlet-class>cn.rjtraining.servlet.UserServlet</servlet-class><!--告诉前台页面应该是找哪个类处理页面传来的信息  -->
@@ -103,6 +134,13 @@
     <servlet-name>UserDistributionServlet</servlet-name>
     <servlet-class>cn.rjtraining.servlet.UserDistributionServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserCollegeServlet</servlet-name>
+    <servlet-class>cn.rjtraining.servlet.UserCollegeServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -121,6 +159,10 @@
   <servlet-mapping>
     <servlet-name>UserDistributionServlet</servlet-name>
     <url-pattern>/userdistribution</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserCollegeServlet</servlet-name>
+    <url-pattern>/jfree</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>

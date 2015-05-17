@@ -180,8 +180,6 @@ public class CollegeDaoImpl implements CollegeDao {
 
 
 	public int collegesum() {
-		// TODO Auto-generated method stub
-		
 		
 		String sql = "select count(*) from college";
         System.out.println(sql);
@@ -203,7 +201,6 @@ public class CollegeDaoImpl implements CollegeDao {
 
 
 	public int majorsum() {
-		// TODO Auto-generated method stub
 		
 		String sql = "select sum(cmajorsum) from college";
         System.out.println(sql);
@@ -242,6 +239,37 @@ public class CollegeDaoImpl implements CollegeDao {
  			e.printStackTrace();
  		}
  		return -1;
+	}
+
+
+
+	@Override
+	public List<College> findAllCollege() {
+		String sql = "select *  from college";
+        System.out.println(sql);
+        ResultSet rs = null;
+        int x =0;
+        rs= dc.selectInfo(sql);
+        List<College> ls  = new ArrayList<>();
+        try {
+       	 while (rs.next()){
+       		 College c  =new College();
+			 c.setCid(rs.getInt(1));
+			 c.setCname(rs.getString("cname"));
+			 c.setCleader(rs.getString("cleader"));
+			 c.setCmajorsum(rs.getInt(4));
+			 c.setCbanjisum(rs.getInt(5));
+			 c.setCinfo(rs.getString("cinfo"));
+			 ls.add(c);
+			
+       	 }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("sql÷¥––¥ÌŒÛ");
+			e.printStackTrace();
+		}
+		
+		return ls;
 	}
 	
 	

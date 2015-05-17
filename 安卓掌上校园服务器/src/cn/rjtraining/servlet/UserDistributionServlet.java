@@ -22,7 +22,6 @@ import cn.rjtraining.model.Page;
 import cn.rjtraining.model.User;
 
 public class UserDistributionServlet extends HttpServlet {
-
 	/**
 	 * Constructor of the object.
 	 */

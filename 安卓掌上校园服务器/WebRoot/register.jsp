@@ -1,4 +1,8 @@
-<%@ page language="java" import="java.util.*" import="java.util.List"  import="cn.rjtraining.model.District"  import="cn.rjtraining.model.UserType" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" import="java.util.List"  import="cn.rjtraining.model.District" 
+	import="cn.rjtraining.model.College" 
+
+
+ import="cn.rjtraining.model.UserType" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -29,7 +33,7 @@ function aa() {
 
 </script>
 	</head>
-	<body bgcolor="#dddddd" onkeydown="on_return();">
+	<body bgcolor="#e2e2e2" onkeydown="on_return();">
 		<!-- body的属性onkeydown，这样在按下enter之后，就出发了on_return()方法。 -->
 		<h1 align="center">
 			管理员注册
@@ -63,7 +67,7 @@ function aa() {
 				
 				<tr height="32px">
 					<td>
-						账号：
+						学号：
 					</td>
 					<td>
 						<input type="text" name="uid" style="width: 180px" id="uid" />
@@ -75,7 +79,7 @@ function aa() {
 						姓名：
 					</td>
 					<td>
-						<input type="text" name="uname" style="width: 180px" id="uname" />
+						<input type="text" name="uname" style="width: 180px" id="uid" />
 					</td>
 					<!-- tabindex使table键按照自己的要求的顺序往下走。 -->
 				</tr>
@@ -84,10 +88,75 @@ function aa() {
 						密码：
 					</td>
 					<td>
-						<input type="password" name="password" style="width: 180px"
+							<input type="password" name="password" style="width: 180px"
 							id="password" />
 					</td>
+					
+					<!-- tabindex使table键按照自己的要求的顺序往下走。 -->
 				</tr>
+				<tr height="32px">
+					<td>
+						年龄：
+					</td>
+					<td>
+						<input type="text" name="age" style="width: 180px" id="uid" />
+					</td>
+					<!-- tabindex使table键按照自己的要求的顺序往下走。 -->
+				</tr>
+				<tr height="32px">
+					<td>
+						性别：
+					</td>
+					<td>
+						<select id ="sex" name = "sex" >
+                    		<option value="男">男</option>
+					 		<option value="女">女</option>	
+					 	</select>
+					</td>
+					<!-- tabindex使table键按照自己的要求的顺序往下走。 -->
+				</tr>
+				<tr height="32px">
+					<td>
+						电话：
+					</td>
+					<td>
+						<input type="text" name="phone" style="width: 180px" id="uid" />
+					</td>
+					<!-- tabindex使table键按照自己的要求的顺序往下走。 -->
+				</tr>
+				<tr height="32px">
+					<td>
+						地址：
+					</td>
+					<td>
+						<input type="text" name="address" style="width: 180px" id="uid" />
+					</td>
+					<!-- tabindex使table键按照自己的要求的顺序往下走。 -->
+				</tr>
+				<tr height="32px">
+					<td>
+						选择院系：
+					</td>
+					<td>
+					<select id ="college" name = "college" >
+					
+                    <option value="">选择院系</option>
+						<%    
+						List<College> lsss = new ArrayList();
+						lsss = (List<College>)request.getAttribute("listcollege");
+						for (Object o : lsss){
+							College c =(College) o;
+							%>
+						<option  value="<%=c.getCid() %>"><%=c.getCname()%></option>
+						<%	
+						}
+					 	%>
+					 	</select>
+					</td>
+				</tr>
+				
+			
+				
 				<tr height="32px">
 					<td>
 						选择籍贯：
@@ -106,8 +175,9 @@ function aa() {
 						<%	
 						}
 					 	%>
+					 	</select>
 					</td>
-				</select>
+				
 				</tr>
 				<tr height="32px">
 					<td colspan="2" align="center">

@@ -39,5 +39,7 @@ public interface UserDao {
 	
 	List<User> findAllUser();
 	
+	int  findByCollegeId(int collegeid);
+	
 }
 //该接口规定了和用户有关的方法。是我们程序条理化的重要组成部分，接口的书写是能够体现一个程序员对整个程序把握性的能力。

@@ -13,6 +13,22 @@ public class District implements  Serializable {
 	
 	private int pid;
 	private String name;
+	
+	private double dlongtitude;
+	private double dlatitude;
+	
+	public double getDlongtitude() {
+		return dlongtitude;
+	}
+	public void setDlongtitude(double dlongtitude) {
+		this.dlongtitude = dlongtitude;
+	}
+	public double getDlatitude() {
+		return dlatitude;
+	}
+	public void setDlatitude(double dlatitude) {
+		this.dlatitude = dlatitude;
+	}
 	public int getId() {
 		return id;
 	}

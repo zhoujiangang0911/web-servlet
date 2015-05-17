@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.rjtraining.dao.CollegeDao;
 import cn.rjtraining.dao.DistrictDao;
 import cn.rjtraining.dao.UserDao;
 import cn.rjtraining.dao.UserTypeDao;
+import cn.rjtraining.dao.impl.CollegeDaoImpl;
 import cn.rjtraining.dao.impl.DistrictDaoImpl;
 import cn.rjtraining.dao.impl.UserDaoImpl;
 import cn.rjtraining.dao.impl.UserTypeDaoImpl;
+import cn.rjtraining.model.College;
 import cn.rjtraining.model.District;
 import cn.rjtraining.model.User;
 import cn.rjtraining.model.UserType;
@@ -38,6 +41,11 @@ public class DistrictServlete extends HttpServlet {
 		List< District> list= dao.findDistrictByAllSheng();
 		List<UserType> ls=dd.findUserTypeAllType();
 		List<String> ll = new ArrayList<>();
+		
+		CollegeDao daoss = new CollegeDaoImpl();
+		List<College> collegels = daoss.findAllCollege();
+		req.setAttribute("listcollege", collegels);
+		
 		req.setAttribute("listsheng",list);
 		req.setAttribute("usertype",ls);
 		try {

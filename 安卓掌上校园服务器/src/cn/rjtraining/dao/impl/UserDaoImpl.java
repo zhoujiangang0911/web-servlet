@@ -44,7 +44,9 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 	public int insert(User user) {
-		String sql="insert into user values("+user.getUid()+",'"+user.getUname()+"','"+user.getPassword()+"',"+user.getDistrictid()+","+user.getUsertypeid()+")";	
+		String sql="insert into user values("+user.getUid()+",'"+user.getUname()+"','"+user.getPassword()+"',"+user.getDistrictid()+"" +
+				","+user.getUsertypeid()+","+user.getCollegeid()+",'"+user.getAge()+"','"+user.getSex()+"','"+user.getPhone()+"'" +
+						",'"+user.getAddress()+"')";	
 		int x=dc.noSelectInfo(sql);
 		return x;
 	}
@@ -107,5 +109,21 @@ public class UserDaoImpl implements UserDao {
 	        
 		
 		return ls;
+	}
+	@Override
+	public int findByCollegeId(int collegeid) {
+		int x = 0;
+		String sql = "select * from user where collegeid = "+collegeid;
+		ResultSet rs = null;
+        rs= dc.selectInfo(sql);
+        try {
+			while(rs.next()){
+				x++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return x;
 	}
 }

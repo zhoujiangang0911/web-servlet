@@ -28,4 +28,7 @@ public interface CollegeDao {
 
 	List<College> searchForStu(int i);
 	
+	List<College> findAllCollege();
+	
+	
 }

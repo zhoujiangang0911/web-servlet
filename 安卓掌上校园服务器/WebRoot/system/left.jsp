@@ -1,5 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
+int one = 20;
+int two = 100;
+int three = 50;
+int four = 30; 
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
@@ -50,6 +54,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>				
 		</td>
 	</tr>
+	
+	<!-- 
 	<tr>
 		<td align="center">
 			<table width="150" height="40" style="background-color:#CCCCCC">
@@ -60,6 +66,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 				</tr>
 			</table>				
+		</td>
+	</tr>
+	
+	 -->
+	 	<tr>
+		<td align="center">
+			<table width="150" height="40" style="background-color:#CCCCCC">
+				<tr>
+					<td align="center" style="font-size:20px">
+						<a href="jfree?action=list"  target="main"><font color="#000000" face="新宋体"><b>院系分布</b></font></a>
+					</td>
+				</tr>
+			</table>					
 		</td>
 	</tr>
 	<tr>
@@ -78,12 +97,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<table width="150" height="40" style="background-color:#CCCCCC">
 				<tr>
 					<td align="center" style="font-size:20px">
-						<a href="web.jsp"  target="main"><font color="#000000" face="新宋体"><b>网址导航</b></font></a>
+						<a href="download.jsp"  target="main"><font color="#000000" face="新宋体"><b>APP下载</b></font></a>
 					</td>
 				</tr>
 			</table>					
 		</td>
 	</tr>
+
+	
+	
+	
 </table>
 </body>
 </html>
