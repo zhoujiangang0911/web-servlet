@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/usingstate">
+     <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="70dp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/app_using_status"
+        android:id="@+id/status_title_text"/>
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/status_title_text"
+        android:layout_marginBottom="80dp"
+         android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:id="@+id/status_text"/>
+    <Button 
+        android:id="@+id/return_to_selectActivity"
+        android:layout_below="@+id/status_text"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#0000ff"
+                style="@android:style/MediaButton"
+        android:text="@string/return_to_selectactivity"/>
+    
+
+</RelativeLayout>

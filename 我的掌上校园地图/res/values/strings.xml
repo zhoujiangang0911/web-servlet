@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="app_name">我的掌上校园</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="edit_name">学号</string>
+    <string name="edit_password">密码</string>
+    <string name="Ok">登录</string>
+    <string name="reset">重置</string>
+    <string name="register">注册</string>
+    <string name="my_map">校园地图</string>
+    <string name="new_user_register">个人信息注册</string>
+    <string name="welcome">欢迎使用掌上校园系统</string>
+    <string name="new_user_number">学号或手机</string>
+    <string name="new_user_name">姓名</string>
+    <string name="new_user_password">密码</string>
+    <string name="new_user_college">学院名称</string>
+    <string name="new_user_age">年龄</string>
+    <string name="new_user_sex">性别</string>
+    <string name="new_user_man">男</string>
+    <string name="new_user_woman">女</string>
+    <string name="new_user_address">住址</string>
+    <string name="new_user_phone">联系电话</string>
+    <string name="new_user_submit">确定</string>
+    <string name="new_user_exit">取消</string>
+    <string name="fuction_select">功能选择</string>
+    <string name="app_using_status">系统使用状态</string>
+    <string name="school_map">掌上校园地图</string>
+    <string name="map_guide">校园地图导航</string>
+    <string name="exit_app">退出应用</string>
+    <string name="my_info">我的账户信息</string>
+    <string name="title_change_info">修改账户信息</string>
+    <string name="btn_change_submit">确定修改</string>
+    <string name="return_to_selectactivity">返回</string>
+    <string name="choose_destination">点此选择终点</string>
+    <string name="schoolin_person">校内师生</string>
+    <string name="schoolout_person">校外访客</string>
+    <string name="weclome_name">欢迎来到西安科技大学</string>
+</resources>
