@@ -75,16 +75,11 @@ public class UserCollegeServlet extends HttpServlet {
 		int a = ls.size();
 		int colleges[] = new int [a];
 		for (int i =0;i<a;i++){
-			System.out.println(ls.get(i).getCid());
 			colleges[i]= userdao.findByCollegeId(ls.get(i).getCid());
 		}
 		request.setAttribute("collegeuser", colleges);
 		request.setAttribute("collegelist", ls);
 		request.setAttribute("userlist", userls);
-		request.setAttribute("one", 100);
-		request.setAttribute("two", 20);
-		request.setAttribute("three", 50);
-		request.setAttribute("four", 30);
 		try {
 			request.getRequestDispatcher("jfree.jsp").forward(request, response);
 		} catch (Exception e) {

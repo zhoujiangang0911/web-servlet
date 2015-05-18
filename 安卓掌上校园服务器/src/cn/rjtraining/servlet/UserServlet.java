@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cn.rjtraining.dao.ManagerDao;
 import cn.rjtraining.dao.UserDao;
+import cn.rjtraining.dao.impl.ManagerDaoImpl;
 import cn.rjtraining.dao.impl.UserDaoImpl;
+import cn.rjtraining.model.Manager;
 import cn.rjtraining.model.User;
 
 
@@ -70,11 +73,23 @@ public class UserServlet extends HttpServlet {
 			int college = Integer.parseInt(collegeid);
 			UserDao ud = new UserDaoImpl();  //创建一个UserDao类的对象。这里使用了上转型。
 			User user = ud.find(iuid);//通过UserDao()提供的find()方法，使用iuid去在数据库中查找，返回一个user对象。
-			if(user!=null){
+			ManagerDao ddd = new ManagerDaoImpl();
+			Manager manager = ddd.find(Long.parseLong(uid));
+			
+			if(user!=null&&manager!=null){
                     req.setAttribute("msg", "<font color=blue>用户已存在</font>");
 					req.getRequestDispatcher("login.jsp").forward(req, res); 
 			}else{
 				user=new User();
+				manager = new Manager();
+				manager.setMid(Long.parseLong(uid));
+				manager.setPassword(psw);
+				manager.setMname(uname);
+				manager.setMage(Integer.parseInt(age));
+				manager.setMaddress(address);
+				manager.setMcollege(college);
+				manager.setMphone(phone);
+				manager.setMsex(sex);
 				user.setUid(iuid);
 				user.setPassword(psw);
 				user.setUname(uname);
@@ -86,7 +101,7 @@ public class UserServlet extends HttpServlet {
 				user.setSex(sex);
 				user.setAge(age);
 				ud.insert(user);
-				
+				ddd.insert(manager);
 				req.setAttribute("msg", "<font color=blue>注册成功，请登录</font>");
 					req.getRequestDispatcher("login.jsp").forward(req, res); 
 			}

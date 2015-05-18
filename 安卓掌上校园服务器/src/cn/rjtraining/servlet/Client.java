@@ -156,7 +156,6 @@ public class Client extends HttpServlet {
 	          out.flush();
 	          out.close();
 	          System.out.println("系统信息查询结束！！");
-	         
 	   			  //查询成功
 //	   			   out.print("success");
 	         }

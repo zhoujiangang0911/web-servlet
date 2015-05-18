@@ -71,7 +71,6 @@ public class UserJfreeServlet extends HttpServlet {
 		int a = ls.size();
 		int district[] = new int [a];
 		for (int i =0;i<a;i++){
-			System.out.println(ls.get(i).getId());
 			district[i]= userdao.findByDistrict(ls.get(i).getId());
 		}
 		request.setAttribute("districteuser", district);

@@ -37,7 +37,6 @@ List<College> ls = new ArrayList<College>();
  int college[] = (int [])request.getAttribute("collegeuser");
 String xueyuan = "ѧԺ";
 for (int i = 0;i<ls.size();i++){
-	System.out.println(ls.get(i).getCname());
 	int a = 0;
 	dataset.addValue(college[i], xueyuan, ls.get(i).getCname());	
 } 

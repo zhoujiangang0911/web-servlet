@@ -58,6 +58,7 @@ public class ManagerDaoImpl implements ManagerDao {
 	public int insert(Manager manager) {
 		String sql="insert into manager values("+manager.getMid()+",'"+manager.getMname()+"','"+manager.getPassword()+"',"+manager.getMcollege()+","+manager.getMage()+",'"+manager.getMsex()+"',"+"'"+manager.getMaddress()+"',"+"'"+manager.getMphone()+"')";	
 		int x=dc.noSelectInfo(sql);
+		System.out.println(sql);
 		return x;
 	}
 	public boolean deleteById(int id) {

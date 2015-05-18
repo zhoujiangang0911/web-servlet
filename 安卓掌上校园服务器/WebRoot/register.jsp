@@ -53,8 +53,6 @@ function aa() {
 						ls = (List<UserType>)request.getAttribute("usertype");
 						for (Object o : ls){
 							UserType ut =(UserType) o;
-							System.out.println(ut.getUsertypeid());
-							System.out.println(ut.getUsertypename());
 							%>
 						<option  value="<%=ut.getUsertypeid()%>"><%=ut.getUsertypename()%></option>
 						<%	

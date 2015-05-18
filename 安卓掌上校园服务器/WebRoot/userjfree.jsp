@@ -37,7 +37,6 @@ List<District> ls = new ArrayList<District>();
  int district[] = (int [])request.getAttribute("districteuser");
 String xueyuan = "ѧԺ";
 for (int i = 0;i<ls.size();i++){
-	System.out.println(ls.get(i).getName());
 	int a = 0;
 	dataset.addValue(district[i], xueyuan, ls.get(i).getName());	
 } 

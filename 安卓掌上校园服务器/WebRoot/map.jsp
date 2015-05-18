@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");    // 创建Map实例
-	map.centerAndZoom(new BMap.Point(109.199823, 34.372851), 20);  // 初始化地图,设置中心点坐标和地图级别
+	map.centerAndZoom(new BMap.Point(109.199823, 34.372851), 17);  // 初始化地图,设置中心点坐标和地图级别
 	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
 	map.setCurrentCity("西安");          // 设置地图显示的城市 此项是必须设置的
 	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
@@ -77,7 +77,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	for (var i = 0; i < <%=a%>; i ++) {
 	     <%
 	     	for (int i=0;i<a;i++){
-	     	System.out.println(ss[i]);
 	     %>
 	     var marker = new BMap.Marker(point);
 		var point = new BMap.Point(<%=lon[i]%>,<%=lat[i]%> );
