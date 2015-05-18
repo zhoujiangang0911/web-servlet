@@ -10,9 +10,8 @@ double lon[] = new double [a];
 double lat[]  = new double [a];
 for(int i =0;i< a;i++){
 	lon[i] = ls.get(i).getPlongtitude();
-	lat[i] = ls.get(i).getPlongtitude();
-	System.out.println(ls.get(i).getPlongtitude());
-	System.out.println(ls.get(i).getPlatitude());
+	lat[i] = ls.get(i).getPlatitude();
+	
 }	
 	
 String path = request.getContextPath();
@@ -47,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style="height:50px  ;background: #e2e2e2" align="right" >
 		<h1 align="center" ><font color="#000000">学员分布</font></h1>
 	</div>
-    <div style="height:500px ;align="right" id="allmap"></div>
+    <div style="height:700px ;align="right" id="allmap"></div>
   </body>
 </html>
 <script type="text/javascript">
@@ -68,12 +67,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	var ne = bounds.getNorthEast();
 	var lngSpan = Math.abs(sw.lng - ne.lng);
 	var latSpan = Math.abs(ne.lat - sw.lat);
-	
 	for (var i = 0; i < <%=a%>; i ++) {
-		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.8), ne.lat - latSpan * (Math.random() * 0.8));
+	     <%
+	     	for (int i=0;i<a;i++){
+	     %>
+		var point = new BMap.Point(<%=lon[i]%>,<%=lat[i]%> );
 		addMarker(point);
+		<%}
+		%>
 	}
-	
+	alter(a);
 	
 </script>
 	

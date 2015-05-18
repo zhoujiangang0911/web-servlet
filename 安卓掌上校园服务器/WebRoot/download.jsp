@@ -12,6 +12,7 @@
 		</div>
 		<div style="width: 100%; height: 350px ; left:200px"  >
 			<img   align="center" src="image/a.png" style="margin-left: 530px" >
+			<!-- <img src="http://qrcoder.sinaapp.com?t=http://192.168.1.111:8080/xscj/"  style="margin-left: 530px" align="center" > -->
 		</div>
 		
 		<P ALIGN="CENTER" >
