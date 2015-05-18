@@ -2,9 +2,9 @@
 <resources>
 
     <string-array name="state_val">
+        <item>学生</item>
         <item>管理员</item>
         <item>老师</item>
-        <item>学生</item>
         <item>访客</item>
     </string-array>
     <integer-array name="state_index">

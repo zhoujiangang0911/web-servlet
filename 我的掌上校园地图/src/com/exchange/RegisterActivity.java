@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ public class RegisterActivity  extends  Activity{
 	private TextView temp_textview;
 	private LinearLayout mobileLinear, userNumberLinear, nameLinear, pswLinear, phoneLinear, sexLinear, ageLinear, addressLinear, collLinear;
 	
+	private LinearLayout mLayout;
 	String coll;
 	String sex;
 	String sheng;
@@ -286,7 +288,7 @@ public class RegisterActivity  extends  Activity{
 		ageLinear = (LinearLayout) findViewById(R.id.user_age_linear);
 		addressLinear = (LinearLayout) findViewById(R.id.user_address_linear);
 		collLinear = (LinearLayout) findViewById(R.id.user_coll_linear);
-		
+		mLayout = (LinearLayout) findViewById(R.id.user_coll_linear22);
 		
 	//	temp_textview = (TextView) findViewById(R.id.temp_textview);
 		
@@ -329,15 +331,22 @@ public class RegisterActivity  extends  Activity{
 		// 建立Adapter并且绑定数据源
 		final ArrayAdapter<String> stateAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, states);
 		//绑定 Adapter到控件
+		
 		Spinner_state.setAdapter(stateAdapter);
 		Spinner_state.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
-				if(position == len){
-				//	showUserState(false);
-				}else{
-				//	showUserState(true);
+				//Toast.makeText(getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
+				
+				if(position == 0){
+					mLayout.setVisibility(View.VISIBLE);
+				}else if(position == 1){
+					mLayout.setVisibility(View.GONE);
+				}else if(position == 2){
+					mLayout.setVisibility(View.GONE);
+				}else if(position == 3){
+					mLayout.setVisibility(View.GONE);
 				}
 				final int[] stateIndexes =  getResources().getIntArray(R.array.state_val);
 				usertype=stateIndexes[position]+"";
@@ -346,7 +355,9 @@ public class RegisterActivity  extends  Activity{
 			public void onNothingSelected(AdapterView<?> parent) {
 			}
 		});
-		Spinner_sex.setSelection(len);
+//		Spinner_state.setOn
+//		
+//		Spinner_sex.setSelection(len);
 		final String[] sexes =  getResources().getStringArray(R.array.sex_val);
 		// 建立Adapter并且绑定数据源
 		final ArrayAdapter<String> sexAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, sexes);

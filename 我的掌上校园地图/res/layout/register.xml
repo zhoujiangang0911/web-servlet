@@ -97,7 +97,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:hint="学号/工号"
+                    android:hint="学号/手机号"
                     android:inputType="number" >
                 </EditText>
             </LinearLayout>
@@ -149,7 +149,11 @@
                     android:inputType="textPassword" >
                 </EditText>
             </LinearLayout>
-
+			<LinearLayout
+                android:id="@+id/user_coll_linear22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
             <LinearLayout
                 android:id="@+id/user_coll_linear"
                 android:layout_width="match_parent"
@@ -286,7 +290,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right" />
             </LinearLayout>
-            
+            </LinearLayout>
             
             <LinearLayout
                 android:layout_width="wrap_content"

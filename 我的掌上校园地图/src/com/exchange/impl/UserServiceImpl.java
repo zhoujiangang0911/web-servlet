@@ -21,8 +21,8 @@ import com.exchange.service.UserService;
 public class UserServiceImpl implements UserService{
 	private static final String TAG="UserServiceImpl";
 	private String action=null;
-    public	static String PATH="http://192.168.1.104:8080/xscj/servlet/Client";
-    public  static String REGISTPAHT ="http://192.168.1.104:8080/xscj/";
+    public	static String PATH="http://192.168.1.111:8080/xscj/servlet/Client";
+    public  static String REGISTPAHT ="http://192.168.1.111:8080/xscj/";
 	@Override
 	public void userLogin(String loginName, String longinPassword)
 			throws Exception {
