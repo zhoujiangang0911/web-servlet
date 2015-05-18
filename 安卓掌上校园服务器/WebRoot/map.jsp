@@ -8,10 +8,11 @@ List<Place> ls =(List<Place>) request.getAttribute("placelist");
 int a= ls.size();
 double lon[] = new double [a];
 double lat[]  = new double [a];
+String ss[] = new String [a];
 for(int i =0;i< a;i++){
 	lon[i] = ls.get(i).getPlongtitude();
 	lat[i] = ls.get(i).getPlatitude();
-	
+	ss[i] = ls.get(i).getPname();
 }	
 	
 String path = request.getContextPath();
@@ -56,10 +57,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
 	map.setCurrentCity("西安");          // 设置地图显示的城市 此项是必须设置的
 	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-	
+	map.centerAndZoom(point, 12);
 	function addMarker(point){
 	  var marker = new BMap.Marker(point);
 	  map.addOverlay(marker);
+	}
+	// 编写自定义函数,创建标注
+	function addMarker(point,label){
+		var marker = new BMap.Marker(point);
+		map.addOverlay(marker);
+		marker.setLabel(label);
 	}
 	// 随机向地图添加25个标注
 	var bounds = map.getBounds();
@@ -70,9 +77,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	for (var i = 0; i < <%=a%>; i ++) {
 	     <%
 	     	for (int i=0;i<a;i++){
+	     	System.out.println(ss[i]);
 	     %>
+	     var marker = new BMap.Marker(point);
 		var point = new BMap.Point(<%=lon[i]%>,<%=lat[i]%> );
-		addMarker(point);
+		var label = new BMap.Label("<%=ss[i]%>",{offset:new BMap.Size(20,-10)});
+		addMarker(point,label);
 		<%}
 		%>
 	}
