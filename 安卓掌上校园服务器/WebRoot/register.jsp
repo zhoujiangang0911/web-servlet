@@ -40,32 +40,10 @@ function aa() {
 		</h1>
 		<form action="register" method="post" name="hello">
 			<table border="1" align="center" bgcolor="">
-			
-					<tr height="32px">
-					<td>
-						用户类型：
-					</td>
-					<td>
-					<select id ="usertype" name = "usertype" >
-                    <option value="">选择用户类型</option>
-						<%    
-						List<UserType> ls = new ArrayList();
-						ls = (List<UserType>)request.getAttribute("usertype");
-						for (Object o : ls){
-							UserType ut =(UserType) o;
-							%>
-						<option  value="<%=ut.getUsertypeid()%>"><%=ut.getUsertypename()%></option>
-						<%	
-						}
-					 	%>
-					</td>
-				</select>
-				
-				</tr>
-				
+
 				<tr height="32px">
 					<td>
-						学号：
+						账号：
 					</td>
 					<td>
 						<input type="text" name="uid" style="width: 180px" id="uid" />
@@ -130,29 +108,8 @@ function aa() {
 						<input type="text" name="address" style="width: 180px" id="uid" />
 					</td>
 					<!-- tabindex使table键按照自己的要求的顺序往下走。 -->
-				</tr>
-				<tr height="32px">
-					<td>
-						选择院系：
-					</td>
-					<td>
-					<select id ="college" name = "college" >
-					
-                    <option value="">选择院系</option>
-						<%    
-						List<College> lsss = new ArrayList();
-						lsss = (List<College>)request.getAttribute("listcollege");
-						for (Object o : lsss){
-							College c =(College) o;
-							%>
-						<option  value="<%=c.getCid() %>"><%=c.getCname()%></option>
-						<%	
-						}
-					 	%>
-					 	</select>
-					</td>
-				</tr>
-				
+			
+	
 			
 				
 				<tr height="32px">

@@ -59,11 +59,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <tr>
     <input type="hidden" name="action" value="reup" />
     <input type="hidden" name="pageNow" value="${pageNow }" />
-    <td colspan="2" align="center">
-    <input type="submit"  value=" 确认修改 " style="width: 95px;
-    height:30px; color:olive; font-size: large" /> 
-    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; 
+     <td colspan="2" align="center">
+    <input type="submit"  value=" 确认修改 "  style="width: 95px;height:30px; color:olive; font-size: small" /> &nbsp; &nbsp;
+<!-- 
     <input type="reset" value="重新填写" style="width:95px;height:30px; color:olive; font-size: large"/></td>
+-->
     </tr>
     </table>
     </form>

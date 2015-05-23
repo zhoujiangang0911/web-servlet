@@ -48,7 +48,7 @@
 	}
 </script>
 </head>
-<body style="background-image:url('image/10.jpg')";>
+<body style="background-image:url('image/login.jpg')";>
 	<table width="100%" height="100%" border="0">
 		<!--按百分比-->
 		<tr height="207">
@@ -126,7 +126,8 @@ tabindex 使table 键按照自己的要求的顺序往下走。-->
 						
 					</table>
 					
-						<form action="DistrictServlete" method="post" name="DistrictServlete"><input type="submit" value="注册"
+						<form action="DistrictServlete" method="post" name="DistrictServlete">
+						<input type="submit" value="注册"
 								style=" width:80px; height:34px" tabindex="7" /> </form>
 								
 						

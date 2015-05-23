@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cn.rjtraining.dao.ManagerDao;
 import cn.rjtraining.dao.UserDao;
+import cn.rjtraining.dao.impl.ManagerDaoImpl;
 import cn.rjtraining.dao.impl.UserDaoImpl;
+import cn.rjtraining.model.Manager;
 import cn.rjtraining.model.User;
 
 public class PswServlet extends HttpServlet {
@@ -43,62 +46,64 @@ public class PswServlet extends HttpServlet {
 		if (npsw.equals(repsw)) {
 			User user = null;
 			UserDao ud = new UserDaoImpl();
-			if (!uid.equals("")) {
-				int id = Integer.parseInt(uid);
+			
+			Manager manager=null;
+			ManagerDao md=new ManagerDaoImpl();
+			if (!uid.equals("")) 
+			{
+				long id = Integer.parseInt(uid);
 				user = ud.find(id);
+				manager=md.find(id);
 			}
-			if (user != null) {
-				String psw = user.getPassword();
-				if (psw.equals(opsw)) {
+			if (user != null&&manager!=null) {
+	//			String psw = user.getPassword();
+//				if (psw.equals(opsw)) 
+				{
 					user.setPassword(npsw);
 					ud.update(user);
+					
+					manager.setPassword(npsw);
+					md.update(manager);
+					
 					HttpSession hs = req.getSession();
 					hs.invalidate();
-					req.setAttribute("msg", "密码修改成功，请重新登陆");
-					try {
+					req.setAttribute("msg", "密码修改成功!");
 
-						req.getRequestDispatcher("/login.jsp").forward(req, res);
-					} catch (ServletException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				} else {
-					HttpSession hs = req.getSession();
-					hs.invalidate();
-					req.setAttribute("msg", "您输入的原始密码不正确，请重新登陆后再修改");
-					try {
-						req.getRequestDispatcher("/login.jsp")
-								.forward(req, res);
-					} catch (ServletException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
+						try {
+							req.getRequestDispatcher("system/main1.html").forward(req, res);
+						} catch (ServletException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} 
+				
+				} 
+//				else {
+//					HttpSession hs = req.getSession();
+//					hs.invalidate();
+//					req.setAttribute("msg", "您输入的原始密码不正确，请重新登陆后再修改");
+//					try {
+//						req.getRequestDispatcher("/login.jsp")
+//								.forward(req, res);
+//					} catch (ServletException e) 
+//					{
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					} 
+//					catch (IOException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}
 			}
-		} else {
-			req.setAttribute("msg", "两次输入的密码不相等");
-			try {
-				req.getRequestDispatcher("/login.jsp").forward(req,
-						res);
-			} catch (ServletException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		} 
 	}
 
 	private void doUpdate(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession hs = req.getSession();
-		int uid = (Integer) hs.getAttribute("uid");
+		long uid = (Long) hs.getAttribute("uid");
 		String uname = (String) hs.getAttribute("uname");
 		if (uid != 0 && uname != null) {
 			req.setAttribute("uid", uid);

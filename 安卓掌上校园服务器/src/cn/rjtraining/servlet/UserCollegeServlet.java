@@ -1,6 +1,5 @@
 package cn.rjtraining.servlet;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.util.List;
 
@@ -8,12 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.renderer.category.BarRenderer;
-
-import sun.misc.Cache;
 
 import cn.rjtraining.dao.CollegeDao;
 import cn.rjtraining.dao.UserDao;

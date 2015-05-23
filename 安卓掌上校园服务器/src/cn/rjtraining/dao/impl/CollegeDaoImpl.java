@@ -250,7 +250,7 @@ public class CollegeDaoImpl implements CollegeDao {
         ResultSet rs = null;
         int x =0;
         rs= dc.selectInfo(sql);
-        List<College> ls  = new ArrayList<>();
+        List<College> ls  = new ArrayList<College>();
         try {
        	 while (rs.next()){
        		 College c  =new College();

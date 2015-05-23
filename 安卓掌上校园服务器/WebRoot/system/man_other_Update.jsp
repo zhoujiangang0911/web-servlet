@@ -30,8 +30,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </tr>
     
     <tr>
-    <td width=130px align=right>学号:</td>
+    <td width=130px align=right>账号:</td>
     <td><input type="text" name="uid" value="${user.uid }" readonly="readonly" /></td>
+    </tr>
+    
+        
+      <tr>
+    <td align=right>用户类型:</td>
+    <td><input type="text" name="usertype"  id="usertype"  value="${user.usertypeid}" readonly="readonly" /></td>
     </tr>
     
       <tr>
@@ -43,45 +49,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td align=right>密码:</td>
     <td><input type="text" name="password"  id="password"  value="${user.password}" /></td>
     </tr>
+
     
     <tr>
-    <td align=right>学院编号:</td>
-    <td><input type="text" name="collegeid"  id="collegeid"  value="${user.collegeid}" /></td>
-    </tr>
-    
-    <tr>
-    <td align=right>年龄:</td>
-    <td><input type="text" name="age"  id="age" value="${user.age}"/></td>
-    </tr>
-    
-       <tr>
-    <td align=right>性别:</td>
-    <td><select name="sex" width=40px>
-    <option value="男">男</option>
-    <option value="女">女</option>
-    </select>
-    </tr>
-    
-     <tr>
-    <td align=right>住址:</td>
-    <td><input type="text"  name="address"  id="address" value="${user.address}" /></td>
-    </tr>
-     <tr>
-     
-    <td align=right>联系方式:</td>
-    <td><input type="text"  name="phone"  id="phone" value="${user.phone}" /></td>
-    </tr>
-    
-    
-    
-    
-    <tr>
-    <input type="hidden" name="action" value="reup" />
+    <input type="hidden" name="action" value="reup_other" />
     <input type="hidden" name="pageNow" value="${pageNow }" />
     <td colspan="2" align="center">
     <input type="submit"  value=" 确认修改 "  style="width: 95px;height:30px; color:olive; font-size: small" /> &nbsp; &nbsp; 
-<!--     <input type="reset"   value="重新填写"  style="width: 95px;height:30px; color:olive; font-size: small" /></td>
--->
+   <!-- 
+    <input type="reset"   value="重新填写"  style="width: 95px;height:30px; color:olive; font-size: small" /></td>
+    -->
     </tr>
     </table>
     </form>

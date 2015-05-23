@@ -15,7 +15,7 @@ a{ font-family:"迷你简隶书"; background-color:#CCC; font-size:17px}
 </style>
 </head>
 <body style="background-image:url('image/10.jpg')">
-<!-- 
+
 <div style="width:100%; height:135px;">
 <table width="953" height="145" border="0">
 <tr height="40">
@@ -23,8 +23,8 @@ a{ font-family:"迷你简隶书"; background-color:#CCC; font-size:17px}
 <td colspan="4" style="text-align:center; vertical-align:middle; font-family:'迷你简隶书'; font-size:40px ;margin-right: 800px">安卓掌上校园系统</td>
 <td></td>
 
-<!-- <td width="70" valign="top"><a href="system/main.html" target="main">返回首页</a></td>
-<td width="70" valign="top"><a href="#" onclick="window.opener=null;window.open('','_self');window.close();">退出系统</a></td>
+<td width="70" valign="top"><a href="system/main1.html" target="main">返回首页</a></td>
+<td  width="70" valign="top"><a href="<%=basePath%>login.jsp" target="_parent">退出系统</a></td>
  
 </tr>
 <tr>
@@ -38,21 +38,24 @@ a{ font-family:"迷你简隶书"; background-color:#CCC; font-size:17px}
 <td></td>
 </tr>
 <tr height="30">
-<td colspan="3"  ><font style="background-color:transparent; font-family:'宋体'">欢迎 <b><span>${uname}</span></b> 进入管理系统</font></td>
+<td colspan="3"  >
+<font style="background-color:transparent; font-family:'宋体'">欢迎 <b><span>${uname}</span></b> 管理员进入系统</font></td>
 <td></td>
 <td></td>
 <td></td>
+<!-- 
 <td  align="center" width="40"><a href="javascript:history.go(-1);">后退</a></td>
 <td  align="center"><a href="javascript:history.go(1);">前进</a></td>
+-->
 <td  width="80" align="center"><a href="<%=basePath%>login.jsp" target="_parent">重新登陆</a></td>
 <td  align="center"><a href="pswUpdate?action=update" target="main">修改密码</a></td>
 </tr>
 </table>
-</div>  -->
+</div>  
 
 <div>
 	<h1 style="text-align:center; vertical-align:middle; font-family:'宋体'; font-size:40px ;margin-right: 30px">安卓掌上校园系统</h1>
-	<h3 style="background-color:transparent; font-family:'宋体'">欢迎 <b><span style="background-color: #e60039 ">${uname}</span></b> 进入管理系统</h3>
+	<h3 style="background-color:transparent; font-family:'宋体'">欢迎 <b><span style="background-color: #e60039 ">${uname}</span></b> 管理员进入系统</h3>
 </div>
 
 

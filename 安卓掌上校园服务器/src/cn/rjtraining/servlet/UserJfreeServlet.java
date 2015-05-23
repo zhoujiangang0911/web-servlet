@@ -1,7 +1,6 @@
 package cn.rjtraining.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,13 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.rjtraining.dao.CollegeDao;
 import cn.rjtraining.dao.DistrictDao;
 import cn.rjtraining.dao.UserDao;
-import cn.rjtraining.dao.impl.CollegeDaoImpl;
 import cn.rjtraining.dao.impl.DistrictDaoImpl;
 import cn.rjtraining.dao.impl.UserDaoImpl;
-import cn.rjtraining.model.College;
 import cn.rjtraining.model.District;
 import cn.rjtraining.model.User;
 

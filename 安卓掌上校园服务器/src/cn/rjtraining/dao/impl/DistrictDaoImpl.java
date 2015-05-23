@@ -52,7 +52,7 @@ public class DistrictDaoImpl implements DistrictDao{
 	public List<District> findDistrictByAllSheng() {
 		
 		
-		List<District> list = list = new ArrayList<>();
+		List<District> list = list = new ArrayList<District>();
 		String sql = "SELECT * FROM district WHERE id < 35 " ;
 		ResultSet rs = null;
 		int a = 0;

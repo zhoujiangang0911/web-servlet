@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">    
-    <title>修改密码</title>    
+    <title>修改我的密码</title>    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 function check(){
 	var psw1=document.getElementById("psw1");
 	var psw2=document.getElementById("psw2");
-	if(psw1.value.length>=6){
+	if(psw1.value.length>=3){
 		if(psw1.value==psw2.value){
 			pswup.submit();
 		}else{
@@ -27,7 +27,7 @@ function check(){
 			psw1.select();
 		}		
 	}else{
-		alert("密码不能小于6位");
+		alert("密码不能小于3位");
 		psw1.value="";
 		psw2.value="";
 		psw1.focus();
@@ -50,10 +50,12 @@ function check(){
     <td>用户姓名:</td>
     <td><input type="text" name="uname" value="${uname }" readonly="readonly"/></td>
     </tr>
+  <!-- 
     <tr>
     <td>原始密码：</td>
     <td><input type="password" name="oldpassword" placeholder="请输入旧密码..."/></td>
     </tr>
+    -->
     <tr>
     <td>更新密码：</td>
     <td><input type="password" name="newpsw"  id="psw1"  placeholder="请输入新密码..."/></td>
@@ -64,8 +66,11 @@ function check(){
     </tr>
     <tr>
     <input type="hidden" name="action" value="confirm" />
+
     <td colspan="2" align=center><input type="button"  value="提交" onclick="check()"/>
+ <!-- 
     <input type="button" value="重置" onclick="javascript:hostory(-1);"/>
+-->
     </td>
     </tr>
     </table>

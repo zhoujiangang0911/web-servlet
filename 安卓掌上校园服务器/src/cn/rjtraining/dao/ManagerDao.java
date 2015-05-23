@@ -1,9 +1,6 @@
 package cn.rjtraining.dao;
-import java.util.ArrayList;
-
 import cn.rjtraining.model.Manager;
 import cn.rjtraining.model.Page;
-import cn.rjtraining.model.Place;
 public interface ManagerDao {
 /*
  * 在user表中有些什么操作？
@@ -50,5 +47,6 @@ public interface ManagerDao {
 	int managersum();
 	
 	int sex_sum(String sex);
+	Page search_other(int pageNow);
 }
 //该接口规定了和用户有关的方法。是我们程序条理化的重要组成部分，接口的书写是能够体现一个程序员对整个程序把握性的能力。

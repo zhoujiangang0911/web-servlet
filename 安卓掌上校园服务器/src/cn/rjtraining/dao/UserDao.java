@@ -15,7 +15,7 @@ public interface UserDao {
  * @param id 用户的id，如果是学生，id就表示学号，如果是老师，id 就表示工号。
  * @return 如果存在此用户，返回此用户，否则返回空值
  */
-	User find(int id);
+	User find(long id);
 /**
  * 修改用户的信息，包括登陆密码、用户名、角色。
  * @param user 一个实体
@@ -34,6 +34,8 @@ public interface UserDao {
  * @return  删除成功返回true，否则false
 */
 	boolean deleteById(int id);
+	
+	int findType(long id);
 	
 	int usersum();
 	

@@ -1,9 +1,21 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*, cn.rjtraining.model.College" 
+	import=" cn.rjtraining.model.College" import=" cn.rjtraining.model.Page"
+	import=" cn.rjtraining.model.User"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+ <%
+   	List<College> ls =(List<College> )request.getAttribute("listcollege");
+   	String cc[] = new String[ls.size()];
+   		for(int i =0;i<ls.size();i++){
+		College college =ls.get(i);
+		cc[i] = college.getCname();
+	//	System.out.println(college.getCname());
+		}
+    %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -20,12 +32,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </style>
   </head>
     <body bgcolor="#f0f5fb">
-    <h1 align="center">用户信息管理</h1>
+    <h1 align="center">学生用户信息adf</h1>
     <table width=100%>
       <tr>
   <td><form action="manSearch" method="post">
   <input type="hidden" name="action" value="manadd" />
- <input type="submit" align=left value="新用户注册"  style="width: 90px;height:30px; color:olive; font-size: 15px" />
+ <input type="submit" align=left value="学生用户注册"  style="width: 90px;height:30px; color:olive; font-size: 15px" />
 </form> 
 </td>
 
@@ -33,29 +45,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <hr />
   <table border="1" width=100%>
   <tr style="background-color: aqua;">
-  <td>学号</td>
+  <td>账号</td>
   <td>姓名</td>
-  <td>密码</td>
-   <td>学院编号</td>
+ <!--   <td>密码</td>
+ -->
+   <td>学院</td>
   <td>年龄</td>
   <td>性别</td>
   <td>居住地址</td>
    <td>联系方式</td>
   <td colspan=2>操作</td>
   </tr>
-   <c:forEach var="list" items="${data.datas}">
-   <tr>
-   <td>${list.mid }</td>
-   <td>${list.mname }</td>
+  <%--  <c:forEach var="list" items="${data.datas}" > --%>
+  
+  <%--  <td>${list.uid }</td>
+   <td>${list.uname }
+   	
+   </td>
+   <!-- 
    <td>${list.password }</td>
-    <td>${list.mcollege }</td>
-   <td>${list.mage }</td>
-   <td>${list.msex }</td>
-   <td>${list.maddress }</td>
-    <td>${list.mphone }</td>
+    -->
+    <td>${list.collegeid }</td>
+   
+    <td><%=cc[0] %></td>
+   <td>${list.age }</td>
+   <td>${list.sex }</td>
+   <td>${list.address }</td>
+    <td>${list.phone }</td>
+   <td>
+   
+   
+   <td>${list.uid }</td>
+   <td>${list.uname }
+   	
+   </td> --%>
+   <!-- 
+   <td>${list.password }</td>
+    -->
+    <%-- <td>${list.collegeid }</td> --%>
+    <%
+    int iii=0;
+   	Page pa =(Page)request.getAttribute("data");
+   	List<User> ll =(List<User>) pa.getDatas();
+  	 for(Object o :ll){
+ 			User u = (User)o;
+    %>
+     <tr>
+    <td> <%=u.getUid() %></td>
+   <td><%=u.getUname() %></td>
+   <td><%=cc[u.getCollegeid()-1] %></td>
+   <td><%=u.getAge() %></td>
+    <td><%=u.getSex()%></td>
+    <td><%=u.getAddress() %></td>
+    <td><%=u.getPhone() %></td>
    <td>
    <form action="manSearch" method="post">
-   <input type="hidden" name="mid" value="${list.mid}" />
+   <input type="hidden" name="uid" value="${list.uid}" />
 
    <input type="hidden" name="pageNow" value="${data.pageNow}" />
    <input type="hidden" name="action" value="update" />
@@ -64,13 +109,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <td>
    <form action="manSearch" method="post">
    <input type="hidden" name="action" value="delete" />
-   <input type="hidden" name="mid" value="${list.mid }" />
+   <input type="hidden" name="uid" value="${list.uid }" />
    <input type="hidden" name="pageNow" value="${data.pageNow}" />
    <input type="submit" value="删 除" onclick="return confirm('您确定要删除吗？')" />
    </form>
    </td>
    </tr>   
-   </c:forEach>  
+  <%--  </c:forEach>  --%> 
+  <%
+  }
+   %>
     <tr>
 <td colspan="9" align="right">
 <label style="color: blue; float: left;">

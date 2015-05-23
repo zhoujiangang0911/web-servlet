@@ -50,7 +50,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <input type="hidden" name="pageNow" value="${pageNow }" />
     <td colspan="2" align="center">
     <input type="submit"  value=" 确认修改 "  style="width: 95px;height:30px; color:olive; font-size: small" /> &nbsp; &nbsp; 
+ <!-- 
     <input type="reset"   value="重新填写"  style="width: 95px;height:30px; color:olive; font-size: small" /></td>
+    -->
     </tr>
     </table>
     </form>

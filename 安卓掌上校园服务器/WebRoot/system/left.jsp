@@ -22,12 +22,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
 					<td align="center" style="font-size:20px">
 					<!-- a超链接的标签 href是超链接的地址 target执行a标签之后，显示的位置 -->
-						<a href="manSearch?action=list" target="main"><font color="#000000" face="新宋体"><b>用户信息</b></font></a>
+						<a href="manSearch?action=list" target="main"><font color="#000000" face="新宋体"><b>学生用户</b></font></a>
 					</td>
 				</tr>
 			</table>				
 		</td>
 	</tr>
+	
+		<tr>
+		<td align="center">
+			<table width="150" height="40" style="background-color:#CCCCCC">
+				<tr>
+					<td align="center" style="font-size:20px">
+					<!-- a超链接的标签 href是超链接的地址 target执行a标签之后，显示的位置 -->
+						<a href="manSearch?action=otherlist" target="main"><font color="#000000" face="新宋体"><b>其他用户</b></font></a>
+					</td>
+				</tr>
+			</table>				
+		</td>
+	</tr>
+	
 	
 		<tr>
 		<td align="center">

@@ -11,10 +11,11 @@ public class Manager implements Serializable {
 	private int mcollege; // 学院
 	private int  mage; // 用户年龄
 	private String  msex; // 用户年龄
-	
-	public Manager()
-	{
-		
+	private String maddress;
+	private String mphone;
+	public Manager() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public Manager(long mid, String mname, String password, int mcollege,
 			int mage, String msex, String maddress, String mphone) {
@@ -28,17 +29,6 @@ public class Manager implements Serializable {
 		this.maddress = maddress;
 		this.mphone = mphone;
 	}
-	
-	
-	public String getMsex() {
-		return msex;
-	}
-	public void setMsex(String msex) {
-		this.msex = msex;
-	}
-	private String maddress; // 用户住址
-	private String mphone; // 电话号码
-	
 	public long getMid() {
 		return mid;
 	}
@@ -69,6 +59,12 @@ public class Manager implements Serializable {
 	public void setMage(int mage) {
 		this.mage = mage;
 	}
+	public String getMsex() {
+		return msex;
+	}
+	public void setMsex(String msex) {
+		this.msex = msex;
+	}
 	public String getMaddress() {
 		return maddress;
 	}
@@ -82,7 +78,5 @@ public class Manager implements Serializable {
 		this.mphone = mphone;
 	}
 	
-	
-
 	
 }

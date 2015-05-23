@@ -25,6 +25,7 @@ import cn.rjtraining.jdbc.Dbconnect;
 import cn.rjtraining.model.Manager;
 import cn.rjtraining.model.Place;
 import cn.rjtraining.model.Status;
+import cn.rjtraining.model.User;
 
 
 public class Client extends HttpServlet {
@@ -165,16 +166,6 @@ public class Client extends HttpServlet {
 	   			System.out.println("系统信息查询失败");
 	   			out.print("failed");
 	   		}
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 	private void userupdate(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
@@ -202,6 +193,10 @@ public class Client extends HttpServlet {
 		long iuid = Integer.parseInt(updateMid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。
 		  ManagerDao md = new ManagerDaoImpl();  //创建一个UserDao类的对象。这里使用了上转型。
 		  Manager man = md.find(iuid); 
+
+// lx添加，为User表一并更新用户信息
+		  UserDao ud=new UserDaoImpl();           
+		  User use=ud.find(iuid);
 		  
 		  response.setCharacterEncoding("utf-8");
 		  response.setContentType("text/html;charset=UTF-8");
@@ -209,17 +204,33 @@ public class Client extends HttpServlet {
 		  
 		  try{
 		       out=response.getWriter();
-		       if(man!=null)
+		       if(man!=null&&use!=null)
 		         {
-		    	   //用户存在,可以更新
+		    	   //在两个表中，用户都存在,可以更新
 		    	   Manager manager = new Manager();
-
+                   User user=new User();
 
 		   			int college=Integer.parseInt(updateMcollege);
-		   			int age=Integer.parseInt(updateMage);
+		   			System.out.println("update college-->"+college);
+
+		   			boolean x=false,y=false;
 		   			
-		   			
-		   			
+		   			if(college==0)                           //用户身份信息为“管理员”、“游客” “老师”时,只用更新姓名，密码
+		   			{
+		   				manager.setMid(iuid);
+			   			manager.setMname(updateMname);
+			   			manager.setPassword(updatePassword);
+			   		    y=md.update(manager);
+			   		    
+			     		user.setUid(iuid);
+			   			user.setUname(updateMname);
+			   			user.setPassword(updatePassword);
+			   			user.setUsertypeid(use.getUsertypeid());                     //默认用户类型不变。
+			   		    x=ud.update(user);
+		   			}
+		   			else                                     //用户身份信息为“学生” ,更新所有属性
+		   			{
+			   		int age=Integer.parseInt(updateMage);
 		   			manager.setMid(iuid);
 		   			manager.setMname(updateMname);
 		   			manager.setPassword(updatePassword);
@@ -228,9 +239,20 @@ public class Client extends HttpServlet {
 		   			manager.setMsex(updateMsex);
 		   			manager.setMaddress(updateMaddress);
 		   			manager.setMphone(updateMphone);
-		   			boolean y=md.update(manager);
+		   			 y=md.update(manager);
 		   			
-		   			if(y)
+		   			user.setUid(iuid);
+		   			user.setUname(updateMname);
+		   			user.setPassword(updatePassword);
+		   			user.setUsertypeid(1);                     //默认用户类型为“1”，即：学生
+		   			user.setCollegeid(college);
+		   			user.setAge(age);
+		   			user.setSex(updateMsex);
+		   			user.setAddress(updateMaddress);
+		   			user.setPhone(updateMphone);
+		   			 x=ud.update(user);
+		   			}
+		   			if(y&&x)
 		   			{
 		   			  //更新正确
 		   			   out.print("success");
@@ -478,77 +500,172 @@ public class Client extends HttpServlet {
 		*
 		*/
 		
-		String registerMid=request.getParameter("registerMid");
-		String registerMname=request.getParameter("registerMname");
-		       registerMname=new String(registerMname.getBytes("iso8859-1"),"utf-8");
-		String registerPassword=request.getParameter("registerPassword");
-		String registerMcollege=request.getParameter("registerMcollege");
-		String registerMage=request.getParameter("registerMage");
-		String registerMsex=request.getParameter("registerMsex");
-		       registerMsex=new String(registerMsex.getBytes("iso8859-1"),"utf-8");
-		String registerMaddress=request.getParameter("registerMaddress");
-		       registerMaddress=new String(registerMaddress.getBytes("iso8859-1"),"utf-8");
-		String registerMphone=request.getParameter("registerMphone");
 		
-		long iuid = Integer.parseInt(registerMid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。
-		  ManagerDao md = new ManagerDaoImpl();  //创建一个UserDao类的对象。这里使用了上转型。
-		  Manager man = md.find(iuid); 
-		  
-		  response.setCharacterEncoding("utf-8");
+		
+		System.out.println("register");
+	    System.out.println("---->get");
+		
+		String registerMid=request.getParameter("uid");
+		String registerMname=request.getParameter("uname");
+		       registerMname=new String(registerMname.getBytes("iso8859-1"),"utf-8");
+		String registerPassword=request.getParameter("password");
+		String registerDistrct=request.getParameter("sheng");
+		String registerUsertype=request.getParameter("usertype");
+		String registerMcollege=request.getParameter("college");
+		String registerMage=request.getParameter("age");
+		String registerMsex=request.getParameter("sex");
+		       registerMsex=new String(registerMsex.getBytes("iso8859-1"),"utf-8");
+		String registerMaddress=request.getParameter("address");
+		       registerMaddress=new String(registerMaddress.getBytes("iso8859-1"),"utf-8");
+		String registerMphone=request.getParameter("phone");
+		
+		long  iuid = Integer.parseInt(registerMid);
+//	   	long iuid = Integer.parseInt(registerMid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。
+	    ManagerDao md = new ManagerDaoImpl();  //创建一个UserDao类的对象。这里使用了上转型。
+//	    Manager man = md.find(iuid); 
+		
+//		long iuid = Integer.parseInt(registerMid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。
+	    
+	    
+	    
+		int dis = Integer.parseInt(registerDistrct);
+		int ut = Integer.parseInt(registerUsertype);
+		int age=Integer.parseInt(registerMage);
+		int college = Integer.parseInt(registerMcollege);
+		UserDao ud = new UserDaoImpl();  //创建一个UserDao类的对象。这里使用了上转型。
+		User user = ud.find(iuid);//通过UserDao()提供的find()方法，使用iuid去在数据库中查找，返回一个user对象。
+		ManagerDao ddd = new ManagerDaoImpl();
+		Manager manager = ddd.find(iuid);
+		
+		 response.setCharacterEncoding("utf-8");
 		  response.setContentType("text/html;charset=UTF-8");
 		  PrintWriter out=null;
-		  
+		
 		  try{
 		       out=response.getWriter();
-		       if(man==null)
-		         {
-		    	   //用户不存在
-		    	   Manager manager = new Manager();
-
-
-		   		if (registerMid != null && registerPassword!=null&&registerMname!=null) 
-		   			{
-		   			int college=Integer.parseInt(registerMcollege);
-		   			int age=Integer.parseInt(registerMage);
-		   			
-		   			
-		   			
-		   			manager.setMid(iuid);
-		   			manager.setMname(registerMname);
-		   			manager.setPassword(registerPassword);
-		   			manager.setMcollege(college);
-		   			manager.setMage(age);
-		   			manager.setMsex(registerMsex);
-		   			manager.setMaddress(registerMaddress);
-		   			manager.setMphone(registerMphone);
-		   			int y=md.insert(manager);
-		   			
-		   			if(y>0)
-		   			{
-		   			  //注册正确
-		   			   out.print("success");
-		   			}
-		   			else
-		   			{
-		   				System.out.println("注册插入失败");
-		   				out.print("failed");
-		   				
-		   			}
-		   		   }
-		          }
-		       else
-		          {
-		        	//注册错误，用户已存在
-		    	   System.out.println("注册错误，用户已存在");
-		        	out.print("failed");
-		        	}
-		      }finally
-		   {
-		          if(out!=null)
-		      {
-			      out.close();
-		      }
-		    }
+		
+		if(user!=null&&manager!=null)
+		{
+			   System.out.println("注册错误，用户已存在");
+	        	out.print("failed");
+		}else
+		{	user=new User();
+			manager = new Manager();
+			manager.setMid(iuid);
+			manager.setPassword(registerPassword);
+			manager.setMname(registerMname);
+			if(ut==1)                           //判断是否是学生
+			{
+			manager.setMage(age);
+			manager.setMaddress(registerMaddress);
+			manager.setMcollege(college);
+			manager.setMphone(registerMphone);
+			manager.setMsex(registerMsex);
+			}
+			ddd.insert(manager);
+			
+			user.setUid(iuid);
+			user.setPassword(registerPassword);
+			user.setUname(registerMname);
+			user.setUsertypeid(ut);
+			if(ut==1)
+			{
+			user.setDistrictid(dis);
+			user.setAddress(registerMaddress);
+			user.setPhone(registerMphone);
+			user.setCollegeid(college);
+			user.setSex(registerMsex);
+			user.setAge(age);
+			}
+			ud.insert(user);
+			
+			 //注册正确
+			   out.print("success");
+		}
+		  }finally
+		  {
+			  
+			  if(out!=null)
+			      {
+				      out.close();
+			      }
+		  }
+		
+		
+		
+		
+		
+//		String registerMid=request.getParameter("registerMid");
+//		String registerMname=request.getParameter("registerMname");
+//		       registerMname=new String(registerMname.getBytes("iso8859-1"),"utf-8");
+//		String registerPassword=request.getParameter("registerPassword");
+//		String registerMcollege=request.getParameter("registerMcollege");
+//		String registerMage=request.getParameter("registerMage");
+//		String registerMsex=request.getParameter("registerMsex");
+//		       registerMsex=new String(registerMsex.getBytes("iso8859-1"),"utf-8");
+//		String registerMaddress=request.getParameter("registerMaddress");
+//		       registerMaddress=new String(registerMaddress.getBytes("iso8859-1"),"utf-8");
+//		String registerMphone=request.getParameter("registerMphone");
+//		
+//		long iuid = Integer.parseInt(registerMid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。
+//		  ManagerDao md = new ManagerDaoImpl();  //创建一个UserDao类的对象。这里使用了上转型。
+//		  Manager man = md.find(iuid); 
+//		  
+//		  response.setCharacterEncoding("utf-8");
+//		  response.setContentType("text/html;charset=UTF-8");
+//		  PrintWriter out=null;
+//		  
+//		  try{
+//		       out=response.getWriter();
+//		       if(man==null)
+//		         {
+//		    	   //用户不存在
+//		    	   Manager manager = new Manager();
+//
+//
+//		   		if (registerMid != null && registerPassword!=null&&registerMname!=null) 
+//		   			{
+//		   			int college=Integer.parseInt(registerMcollege);
+//		   			int age=Integer.parseInt(registerMage);
+//		   			
+//		   			
+//		   			
+//		   			manager.setMid(iuid);
+//		   			manager.setMname(registerMname);
+//		   			manager.setPassword(registerPassword);
+//		   			manager.setMcollege(college);
+//		   			manager.setMage(age);
+//		   			manager.setMsex(registerMsex);
+//		   			manager.setMaddress(registerMaddress);
+//		   			manager.setMphone(registerMphone);
+//		   			int y=md.insert(manager);
+//		   			
+//		   			if(y>0)
+//		   			{
+//		   			  //注册正确
+//		   			   out.print("success");
+//		   			}
+//		   			else
+//		   			{
+//		   				System.out.println("注册插入失败");
+//		   				out.print("failed");
+//		   				
+//		   			}
+//		   		   }
+//		          }
+//		       else
+//		          {
+//		        	//注册错误，用户已存在
+//		    	   System.out.println("注册错误，用户已存在");
+//		        	out.print("failed");
+//		        	}
+//		      }finally
+//		   {
+//		          if(out!=null)
+//		      {
+//			      out.close();
+//		      }
+//		    }
 	}
 	
 	

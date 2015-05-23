@@ -5,18 +5,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.omg.PortableInterceptor.USER_EXCEPTION;
-
 import cn.rjtraining.dao.UserTypeDao;
 import cn.rjtraining.jdbc.Dbconnect;
-import cn.rjtraining.model.District;
 import cn.rjtraining.model.UserType;
 
 public class UserTypeDaoImpl implements UserTypeDao{
 	Dbconnect dc = new Dbconnect();
 	@Override
 	public List<UserType> findUserTypeAllType() {
-		List<UserType> list = list = new ArrayList<>();
+		List<UserType> list = list = new ArrayList<UserType>();
 		String sql = "select * from usertype";
 		ResultSet rs = null;
 		rs = dc.selectInfo(sql);

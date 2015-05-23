@@ -3,11 +3,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import cn.rjtraining.dao.PlaceDao;
 import cn.rjtraining.jdbc.Dbconnect;
 import cn.rjtraining.model.Page;
 import cn.rjtraining.model.Place;
-import cn.rjtraining.model.User;
 
 
 public class PlaceDaoImpl implements PlaceDao {
@@ -176,7 +176,7 @@ public class PlaceDaoImpl implements PlaceDao {
 	}
 	@Override
 	public List<Place> findAllPlace() {
-		List<Place> ls = new ArrayList<>();
+		List<Place> ls = new ArrayList<Place>();
 		
 		String sql = "select * from place";
 		 ResultSet rs = null;

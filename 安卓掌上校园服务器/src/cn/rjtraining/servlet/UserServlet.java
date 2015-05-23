@@ -35,29 +35,14 @@ public class UserServlet extends HttpServlet {
 	//重写doPost()方法。
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-//		String uid = new String(req.getParameter("uid").getBytes("iso8859-1"),"utf-8");  //用uid来接收从login页面传来值uid；以下相同。接收到的属性为String类型。在这里没有判断uid，password，role
-////是否为空，因为在login.jsp页面的javascript中已经进行过判断了，如果没有在页面进行判断，则这里需要判断该属性是否为空。
-//		String psw = new String(req.getParameter("password").getBytes("iso8859-1"),"utf-8");
-//		String action = new String(req.getParameter("action").getBytes("iso8859-1"),"utf-8");
-//		String uname = new String(req.getParameter("uname").getBytes("iso8859-1"),"utf-8");
-//		String Districtid = new String(req.getParameter("sheng").getBytes("iso8859-1"),"utf-8");
-//		String usertype = new String(req.getParameter("usertype").getBytes("iso8859-1"),"utf-8");
-//		String collegeid = new String(req.getParameter("college").getBytes("iso8859-1"),"utf-8");
-//		String age = new String(req.getParameter("age").getBytes("iso8859-1"),"utf-8");
-//		String sex = new String(req.getParameter("sex").getBytes("iso8859-1"),"utf-8");
-//		String phone = new String(req.getParameter("phone").getBytes("iso8859-1"),"utf-8");
-//		String address = new String(req.getParameter("address").getBytes("iso8859-1"),"utf-8");
-		
-		
-		
+
 		
 		String uid = req.getParameter("uid");
 		String psw = req.getParameter("password");
 		String action=req.getParameter("action");
 		String uname=req.getParameter("uname");
 		String Districtid = req.getParameter("sheng");
-		String usertype = req.getParameter("usertype");
-		String collegeid = req.getParameter("college");
+
 		String age = req.getParameter("age");
 		String sex = req.getParameter("sex");
 		
@@ -67,19 +52,26 @@ public class UserServlet extends HttpServlet {
 	
 		
 		if(action!=null){
-			int iuid = Integer.parseInt(uid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。
+			long iuid = Integer.parseInt(uid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。
 			int dis = Integer.parseInt(Districtid);
-			int ut = Integer.parseInt(usertype);
-			int college = Integer.parseInt(collegeid);
+
+       //  lx修改， 将usertype统一改为4，代表管理员			
+			
+			int ut = 4;                                      //代表管理员
+			int age1=Integer.parseInt(age);
+			
 			UserDao ud = new UserDaoImpl();  //创建一个UserDao类的对象。这里使用了上转型。
 			User user = ud.find(iuid);//通过UserDao()提供的find()方法，使用iuid去在数据库中查找，返回一个user对象。
+			
 			ManagerDao ddd = new ManagerDaoImpl();
 			Manager manager = ddd.find(Long.parseLong(uid));
 			
 			if(user!=null&&manager!=null){
                     req.setAttribute("msg", "<font color=blue>用户已存在</font>");
 					req.getRequestDispatcher("login.jsp").forward(req, res); 
-			}else{
+			}
+			else
+			{
 				user=new User();
 				manager = new Manager();
 				manager.setMid(Long.parseLong(uid));
@@ -87,7 +79,7 @@ public class UserServlet extends HttpServlet {
 				manager.setMname(uname);
 				manager.setMage(Integer.parseInt(age));
 				manager.setMaddress(address);
-				manager.setMcollege(college);
+
 				manager.setMphone(phone);
 				manager.setMsex(sex);
 				user.setUid(iuid);
@@ -97,18 +89,23 @@ public class UserServlet extends HttpServlet {
 				user.setUsertypeid(ut);
 				user.setAddress(address);
 				user.setPhone(phone);
-				user.setCollegeid(college);
+
 				user.setSex(sex);
-				user.setAge(age);
+				user.setAge(age1);
 				ud.insert(user);
 				ddd.insert(manager);
 				req.setAttribute("msg", "<font color=blue>注册成功，请登录</font>");
 					req.getRequestDispatcher("login.jsp").forward(req, res); 
 			}
-		}else{
-		int iuid = Integer.parseInt(uid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。
+		}
+		else
+		{
+		long iuid = Integer.parseInt(uid);  //通过Integer类提供的parseInt()方法，将String类型的数据转换成int类型。
 		UserDao ud = new UserDaoImpl();  //创建一个UserDao类的对象。这里使用了上转型。
 		User user = ud.find(iuid);              //通过UserDao()提供的find()方法，使用iuid去在数据库中查找，返回一个user对象。
+		int y=ud.findType(iuid);
+		if(y==4)
+		{
 		if (user != null) {                           //判断数据库中是否有对应的uid，是否有需要查找的用户。如果没有，提示该用户不存在。
 			if (user.getPassword().equals(psw)) 
 			   {  //如果找到用户，继续比对密码是否相同，如果不相同，提示密码不正确。
@@ -119,6 +116,7 @@ public class UserServlet extends HttpServlet {
 					hs.setAttribute("password", user.getPassword());
 					
 					req.setAttribute("name", user.getUname());
+					req.setAttribute("uid", user.getUid());
 					req.getRequestDispatcher("system/adminIndex.jsp").forward(req, res);
 				
 			   } 
@@ -132,6 +130,13 @@ public class UserServlet extends HttpServlet {
 			req.setAttribute("msg", "<font color=blue>用户不存在</font>");
 			req.getRequestDispatcher("login.jsp").forward(req, res);           //用户匹配错误，继续跳转到login.jsp登陆界面。
 		}
-	}
+	  }
+		else
+		{
+			System.out.println("只有管理员才有权登录！");
+			req.setAttribute("msg", "<font color=blue>当前用户无权限，只有管理员才有权登录！</font>");
+			req.getRequestDispatcher("login.jsp").forward(req, res);        
+		}
 }
+	}
 }

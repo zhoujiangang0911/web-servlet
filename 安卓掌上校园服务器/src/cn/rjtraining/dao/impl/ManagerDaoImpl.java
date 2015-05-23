@@ -3,11 +3,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import cn.rjtraining.dao.ManagerDao;
 import cn.rjtraining.jdbc.Dbconnect;
 import cn.rjtraining.model.Manager;
 import cn.rjtraining.model.Page;
-import cn.rjtraining.model.Place;
+import cn.rjtraining.model.User;
 
 public class ManagerDaoImpl implements ManagerDao {
 	Dbconnect dc=new Dbconnect();
@@ -74,11 +75,12 @@ public class ManagerDaoImpl implements ManagerDao {
 	
 	public Page search(int pageNow) {
 		Page page = new Page();
-		List<Manager> list = new ArrayList<Manager>();
+		List<User> list = new ArrayList<User>();
 		ResultSet rs = null;
-		String sql = "select * from Manager limit " + (pageNow - 1)
-				* page.getPageSize() + ", " + page.getPageSize();
-		String sql1 = "select count(*) from manager";
+//		String sql = "select * from Manager limit " + (pageNow - 1)
+		String sql = "select * from User where usertypeid=1 limit " + (pageNow - 1)
+		* page.getPageSize() + ", " + page.getPageSize();
+		String sql1 = "select count(*) from user where usertypeid=1";
 		rs = dc.selectInfo(sql1);
 		try {
 			while (rs.next()) {
@@ -91,16 +93,18 @@ public class ManagerDaoImpl implements ManagerDao {
 		rs = dc.selectInfo(sql);
 		try {
 			while (rs.next()) {
-				Manager manager = new Manager();
-				manager.setMid(rs.getLong(1));
-				manager.setMname(rs.getString(2));
-				manager.setPassword(rs.getString(3));
-				manager.setMcollege(rs.getInt(4));
-				manager.setMage(rs.getInt(5));
-				manager.setMsex(rs.getString(6));
-				manager.setMaddress(rs.getString(7));
-				manager.setMphone(rs.getString(8));
-				list.add(manager);
+				User user = new User();
+				user.setUid(rs.getLong(1));
+				user.setUname(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				user.setUsertypeid(rs.getInt(4));
+				user.setDistrictid(rs.getInt(5));
+				user.setCollegeid(rs.getInt(6));
+				user.setAge(rs.getInt(7));
+				user.setSex(rs.getString(8));
+				user.setPhone(rs.getString(9));
+				user.setAddress(rs.getString(10));
+				list.add(user);
 			}
 		} catch (SQLException e) {
 			System.out.println("sql语句异常");
@@ -194,6 +198,48 @@ public class ManagerDaoImpl implements ManagerDao {
  			e.printStackTrace();
  		}
  		return -1;
+	}
+	@Override
+	public Page search_other(int pageNow) {
+		// TODO Auto-generated method stub
+		Page page = new Page();
+		List<User> list = new ArrayList<User>();
+		ResultSet rs = null;
+//		String sql = "select * from Manager limit " + (pageNow - 1)
+		String sql = "select * from User where usertypeid=2 or usertypeid=3 limit " + (pageNow - 1)
+		* page.getPageSize() + ", " + page.getPageSize();
+		String sql1 = "select count(*) from user where usertypeid=1";
+		rs = dc.selectInfo(sql1);
+		try {
+			while (rs.next()) {
+				page.setRowCount(rs.getInt(1));
+				page.setPageCount(rs.getInt(1));
+			}
+		} catch (SQLException e1) {
+			System.out.println("计算rowcount出错");
+		}
+		rs = dc.selectInfo(sql);
+		try {
+			while (rs.next()) {
+				User user = new User();
+				user.setUid(rs.getLong(1));
+				user.setUname(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				user.setUsertypeid(rs.getInt(4));
+//				user.setDistrictid(rs.getInt(5));
+//				user.setCollegeid(rs.getInt(6));
+//				user.setAge(rs.getInt(7));
+//				user.setSex(rs.getString(8));
+//				user.setPhone(rs.getString(9));
+//				user.setAddress(rs.getString(10));
+				list.add(user);
+			}
+		} catch (SQLException e) {
+			System.out.println("sql语句异常");
+		}
+		page.setPageNow(pageNow);
+		page.setDatas(list);
+		return page;
 	}
 	
 /*	public ArrayList<Place> findall(){
